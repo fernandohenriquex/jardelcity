@@ -1,0 +1,128 @@
+[
+ {
+  "id": 5,
+  "nome": "Aguinaldo J. de Souza (Agnaldo Gemeo)",
+  "ativo": false,
+  "partido": null
+ },
+ {
+  "id": 6,
+  "nome": "Caio E. Jardim Antônio",
+  "ativo": false,
+  "partido": "PT"
+ },
+ {
+  "id": 20,
+  "nome": "Cintia Fernandes",
+  "ativo": true,
+  "partido": "PL"
+ },
+ {
+  "id": 1,
+  "nome": "Cleber T. de Camargos (Cleber Bicicletaria)",
+  "ativo": false,
+  "partido": "REPUBLICANOS"
+ },
+ {
+  "id": 7,
+  "nome": "Dalva C. Siqueira dos Santos",
+  "ativo": true,
+  "partido": "REPUBLICANOS"
+ },
+ {
+  "id": 15,
+  "nome": "Dalva Cristina Siqueira",
+  "ativo": false,
+  "partido": "REPUBLICANOS"
+ },
+ {
+  "id": 8,
+  "nome": "Edson R. Vizu (Vizu do Banco)",
+  "ativo": true,
+  "partido": "PRTB"
+ },
+ {
+  "id": 19,
+  "nome": "Fernanda Macedo",
+  "ativo": true,
+  "partido": "PSD"
+ },
+ {
+  "id": 17,
+  "nome": "José E. Ferreira (Chupeta)",
+  "ativo": true,
+  "partido": "MDB"
+ },
+ {
+  "id": 10,
+  "nome": "José Eduardo Gomes Junior (Fofo)",
+  "ativo": true,
+  "partido": "MDB"
+ },
+ {
+  "id": 18,
+  "nome": "Juliano Coelho",
+  "ativo": true,
+  "partido": "PSD"
+ },
+ {
+  "id": 11,
+  "nome": "Leandro Moretti Serrano",
+  "ativo": false,
+  "partido": "PSD"
+ },
+ {
+  "id": 2,
+  "nome": "Luiz Fernando Riul (Xotô)",
+  "ativo": true,
+  "partido": "PSB"
+ },
+ {
+  "id": 9,
+  "nome": "Luiz Gustavo de Souza (Gustavo Sabá)",
+  "ativo": true,
+  "partido": "MDB"
+ },
+ {
+  "id": 22,
+  "nome": "Marcos Rodighero",
+  "ativo": true,
+  "partido": "UNIÃO"
+ },
+ {
+  "id": 12,
+  "nome": "Marli R. Violante Pegoraro",
+  "ativo": false,
+  "partido": "PP"
+ },
+ {
+  "id": 3,
+  "nome": "Mateus Signorini",
+  "ativo": false,
+  "partido": "PP"
+ },
+ {
+  "id": 16,
+  "nome": "Murilo Menegueti",
+  "ativo": true,
+  "partido": "PODE"
+ },
+ {
+  "id": 21,
+  "nome": "Ricardo Frojoni",
+  "ativo": true,
+  "partido": "PL"
+ },
+ {
+  "id": 4,
+  "nome": "Rogério Bello Lima Conga",
+  "ativo": true,
+  "partido": "PP"
+ },
+ {
+  "id": 13,
+  "nome": "Samuel Farah",
+  "ativo": false,
+  "partido": "CIDADANIA"
+ }
+]

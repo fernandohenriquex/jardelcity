@@ -1,0 +1,576 @@
+[
+ {
+  "id": 179,
+  "data": "2025-01-28",
+  "titulo": "1ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/179/ata/ata_01a_sessao_extraordinaria_2025_-_28-01-25.pdf"
+ },
+ {
+  "id": 180,
+  "data": "2025-02-03",
+  "titulo": "1ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/180/ata/ata_01a_sessao_ordinaria_2025_-_03-02-25.pdf"
+ },
+ {
+  "id": 181,
+  "data": "2025-02-17",
+  "titulo": "2ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/181/ata/ata_02a_sessao_ordinaria_2025_-_17-02-25.pdf"
+ },
+ {
+  "id": 182,
+  "data": "2025-02-24",
+  "titulo": "3ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/182/ata/ata_03a_sessao_ordinaria_2025_-_24-02-25.pdf"
+ },
+ {
+  "id": 183,
+  "data": "2025-02-24",
+  "titulo": "2ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/183/ata/ata_02a_sessao_extraordinaria_2025_-_24-02-25.pdf"
+ },
+ {
+  "id": 184,
+  "data": "2025-03-06",
+  "titulo": "4ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/184/ata/ata_04a_sessao_ordinaria_2025_-_06-03-25.pdf"
+ },
+ {
+  "id": 185,
+  "data": "2025-03-06",
+  "titulo": "3ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/185/ata/ata_03a_sessao_extraordinaria_2025_-_06-03-25.pdf"
+ },
+ {
+  "id": 186,
+  "data": "2025-03-17",
+  "titulo": "5ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/186/ata/ata_05a_sessao_ordinaria_2025_-_17-03-25.pdf"
+ },
+ {
+  "id": 187,
+  "data": "2025-03-24",
+  "titulo": "6ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/187/ata/ata_06a_sessao_ordinaria_2025_-_24-03-25.pdf"
+ },
+ {
+  "id": 188,
+  "data": "2025-03-25",
+  "titulo": "4ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/188/ata/ata_04a_sessao_extraordinaria_2025_-_25-03-25.pdf"
+ },
+ {
+  "id": 189,
+  "data": "2025-04-07",
+  "titulo": "7ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/189/ata/ata_07a_sessao_ordinaria_2025_-_07-04-25.pdf"
+ },
+ {
+  "id": 190,
+  "data": "2025-04-07",
+  "titulo": "5ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/190/ata/ata_05a_sessao_extraordinaria_2025_-_07-04-25.pdf"
+ },
+ {
+  "id": 191,
+  "data": "2025-04-14",
+  "titulo": "8ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/191/ata/ata_08a_sessao_ordinaria_2025_-_14-04-25.pdf"
+ },
+ {
+  "id": 192,
+  "data": "2025-04-16",
+  "titulo": "6ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/192/ata/ata_06a_sessao_extraordinaria_2025_-_16-04-25.pdf"
+ },
+ {
+  "id": 194,
+  "data": "2025-04-22",
+  "titulo": "7ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/194/ata/ata_07a_sessao_extraordinaria_2025_-_22-04-25.pdf"
+ },
+ {
+  "id": 193,
+  "data": "2025-04-22",
+  "titulo": "9ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/193/ata/ata_09a_sessao_ordinaria_2025_-_22-04-25.pdf"
+ },
+ {
+  "id": 195,
+  "data": "2025-05-05",
+  "titulo": "10ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/195/ata/ata_10a_sessao_ordinaria_2025_-_05-05-25.pdf"
+ },
+ {
+  "id": 196,
+  "data": "2025-05-05",
+  "titulo": "8ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/196/ata/ata_08a_sessao_extraordinaria_2025_-_05-05-25.pdf"
+ },
+ {
+  "id": 197,
+  "data": "2025-05-12",
+  "titulo": "11ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/197/ata/ata_11a_sessao_ordinaria_2025_-_12-05-25.pdf"
+ },
+ {
+  "id": 198,
+  "data": "2025-05-22",
+  "titulo": "9ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/198/ata/ata_09a_sessao_extraordinaria_2025_-_22-05-25.pdf"
+ },
+ {
+  "id": 199,
+  "data": "2025-05-26",
+  "titulo": "12ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/199/ata/ata_12a_sessao_ordinaria_2025_-_26-05-25.pdf"
+ },
+ {
+  "id": 200,
+  "data": "2025-06-02",
+  "titulo": "13ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/200/ata/ata_13a_sessao_ordinaria_2025_-_02-06-25.pdf"
+ },
+ {
+  "id": 201,
+  "data": "2025-06-02",
+  "titulo": "10ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/201/ata/ata_10a_sessao_extraordinaria_2025_-_02-06-25.pdf"
+ },
+ {
+  "id": 203,
+  "data": "2025-06-16",
+  "titulo": "14ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/203/ata/ata_14a_sessao_ordinaria_2025_-_16-06-25.pdf"
+ },
+ {
+  "id": 202,
+  "data": "2025-06-16",
+  "titulo": "11ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/202/ata/ata_11a_sessao_extraordinaria_2025_-_16-06-25.pdf"
+ },
+ {
+  "id": 204,
+  "data": "2025-06-23",
+  "titulo": "15ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/204/ata/ata_15a_sessao_ordinaria_2025_-_23-06-25.pdf"
+ },
+ {
+  "id": 205,
+  "data": "2025-07-11",
+  "titulo": "12ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/205/ata/ata_12a_sessao_extraordinaria_2025_-_11-07-25.pdf"
+ },
+ {
+  "id": 206,
+  "data": "2025-08-04",
+  "titulo": "16ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/206/ata/ata_16a_sessao_ordinaria_2025_-_04-08-25.pdf"
+ },
+ {
+  "id": 207,
+  "data": "2025-08-07",
+  "titulo": "13ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/207/ata/ata_13a_sessao_extraordinaria_2025_-_07-08-25.pdf"
+ },
+ {
+  "id": 208,
+  "data": "2025-08-11",
+  "titulo": "17ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/208/ata/ata_17a_sessao_ordinaria_2025_-_11-08-25.pdf"
+ },
+ {
+  "id": 209,
+  "data": "2025-08-25",
+  "titulo": "18ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/209/ata/ata_18a_sessao_ordinaria_2025_-_25-08-25.pdf"
+ },
+ {
+  "id": 210,
+  "data": "2025-08-25",
+  "titulo": "14ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/210/ata/ata_14a_sessao_extraordinaria_2025_-_25-08-25.pdf"
+ },
+ {
+  "id": 211,
+  "data": "2025-09-01",
+  "titulo": "19ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/211/ata/ata_19a_sessao_ordinaria_2025_-_01-09-25.pdf"
+ },
+ {
+  "id": 212,
+  "data": "2025-09-01",
+  "titulo": "15ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/212/ata/ata_15a_sessao_extraordinaria_2025_-_01-09-25.pdf"
+ },
+ {
+  "id": 213,
+  "data": "2025-09-04",
+  "titulo": "16ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/213/ata/ata_16a_sessao_extraordinaria_2025_-_04-09-25.pdf"
+ },
+ {
+  "id": 214,
+  "data": "2025-09-15",
+  "titulo": "20ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/214/ata/ata_20a_sessao_ordinaria_2025_-_15-09-25.pdf"
+ },
+ {
+  "id": 215,
+  "data": "2025-09-15",
+  "titulo": "17ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/215/ata/ata_17a_sessao_extraordinaria_2025_-_15-09-25.pdf"
+ },
+ {
+  "id": 216,
+  "data": "2025-09-22",
+  "titulo": "21ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/216/ata/ata_21a_sessao_ordinaria_2025_-_22-09-25.pdf"
+ },
+ {
+  "id": 217,
+  "data": "2025-10-06",
+  "titulo": "22ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/217/ata/ata_22a_sessao_ordinaria_2025_-_06-10-25.pdf"
+ },
+ {
+  "id": 218,
+  "data": "2025-10-09",
+  "titulo": "18ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/218/ata/ata_18a_sessao_extraordinaria_2025_-_09-10-25.pdf"
+ },
+ {
+  "id": 219,
+  "data": "2025-10-13",
+  "titulo": "23ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/219/ata/ata_23a_sessao_ordinaria_2025_-_13-10-25.pdf"
+ },
+ {
+  "id": 220,
+  "data": "2025-10-16",
+  "titulo": "19ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/220/ata/ata_19a_sessao_extraordinaria_2025_-_16-10-25.pdf"
+ },
+ {
+  "id": 221,
+  "data": "2025-10-29",
+  "titulo": "24ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/221/ata/ata_24a_sessao_ordinaria_2025_-_29-10-25.pdf"
+ },
+ {
+  "id": 222,
+  "data": "2025-11-03",
+  "titulo": "25ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/222/ata/ata_25a_sessao_ordinaria_2025_-_03-11-25.pdf"
+ },
+ {
+  "id": 223,
+  "data": "2025-11-10",
+  "titulo": "20ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/223/ata/ata_20a_sessao_extraordinaria_2025_-_10-11-25.pdf"
+ },
+ {
+  "id": 224,
+  "data": "2025-11-17",
+  "titulo": "26ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/224/ata/ata_26a_sessao_ordinaria_2025_-_17-11-25.pdf"
+ },
+ {
+  "id": 225,
+  "data": "2025-11-24",
+  "titulo": "27ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/225/ata/ata_27a_sessao_ordinaria_2025_-_24-11-25.pdf"
+ },
+ {
+  "id": 226,
+  "data": "2025-12-01",
+  "titulo": "28ª Ordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/226/ata/ata_28a_sessao_ordinaria_2025_-_01-12-25.pdf"
+ },
+ {
+  "id": 227,
+  "data": "2025-12-19",
+  "titulo": "21ª Extraordinária da 1ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/227/ata/ata_21a_sessao_extraordinaria_2025_-_19-12-25.pdf"
+ },
+ {
+  "id": 228,
+  "data": "2026-01-28",
+  "titulo": "1ª Extraordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/228/ata/ata_01a_sessao_extraordinaria_2026_-_28-01-26.pdf"
+ },
+ {
+  "id": 229,
+  "data": "2026-02-02",
+  "titulo": "1ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/229/ata/ata_01a_sessao_ordinaria_2026_-_02-02-26.pdf"
+ },
+ {
+  "id": 230,
+  "data": "2026-02-19",
+  "titulo": "2ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/230/ata/ata_02a_sessao_ordinaria_2026_-_19-02-26.pdf"
+ },
+ {
+  "id": 231,
+  "data": "2026-02-23",
+  "titulo": "3ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/231/ata/ata_03a_sessao_ordinaria_2026_-_23-02-26.pdf"
+ },
+ {
+  "id": 232,
+  "data": "2026-02-23",
+  "titulo": "2ª Extraordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/232/ata/ata_02a_sessao_extraordinaria_2026_-_23-02-26.pdf"
+ },
+ {
+  "id": 233,
+  "data": "2026-03-02",
+  "titulo": "4ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/233/ata/ata_04a_sessao_ordinaria_2026_-_02-03-26.pdf"
+ },
+ {
+  "id": 234,
+  "data": "2026-03-16",
+  "titulo": "5ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/234/ata/ata_05a_sessao_ordinaria_2026_-_16-03-26.pdf"
+ },
+ {
+  "id": 235,
+  "data": "2026-03-23",
+  "titulo": "6ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/235/ata/ata_06a_sessao_ordinaria_2026_-_23-03-26.pdf"
+ },
+ {
+  "id": 236,
+  "data": "2026-04-06",
+  "titulo": "7ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/236/ata/ata_07a_sessao_ordinaria_2026_-_06-04-26.pdf"
+ },
+ {
+  "id": 237,
+  "data": "2026-04-13",
+  "titulo": "8ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/237/ata/ata_08a_sessao_ordinaria_2026_-_13-04-26.pdf"
+ },
+ {
+  "id": 238,
+  "data": "2026-04-27",
+  "titulo": "9ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/238/ata/ata_09a_sessao_ordinaria_2026_-_27-04-26.pdf"
+ },
+ {
+  "id": 239,
+  "data": "2026-05-04",
+  "titulo": "10ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/239/ata/ata_10a_sessao_ordinaria_2026_-_04-05-26.pdf"
+ },
+ {
+  "id": 240,
+  "data": "2026-05-11",
+  "titulo": "11ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/240/ata/ata_11a_sessao_ordinaria_2026_-_11-05-26.pdf"
+ },
+ {
+  "id": 241,
+  "data": "2026-05-18",
+  "titulo": "3ª Extraordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/241/ata/ata_03a_sessao_extraordinaria_2026_-_18-05-26.pdf"
+ },
+ {
+  "id": 242,
+  "data": "2026-05-25",
+  "titulo": "12ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/242/ata/ata_12a_sessao_ordinaria_2026_-_25-05-26.pdf"
+ },
+ {
+  "id": 243,
+  "data": "2026-06-01",
+  "titulo": "13ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/243/ata/ata_13a_sessao_ordinaria_2026_-_01-06-26.pdf"
+ },
+ {
+  "id": 244,
+  "data": "2026-06-15",
+  "titulo": "14ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/244/ata/ata_14a_sessao_ordinaria_2026_-_15-06-26.pdf"
+ },
+ {
+  "id": 245,
+  "data": "2026-06-22",
+  "titulo": "15ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/245/ata/ata_15a_sessao_ordinaria_2026_-_22-06-26.pdf"
+ },
+ {
+  "id": 246,
+  "data": "2026-07-13",
+  "titulo": "4ª Extraordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/246/ata/ata_04a_sessao_extraordinaria_2026_-_13-07-26.pdf"
+ },
+ {
+  "id": 247,
+  "data": "2026-08-10",
+  "titulo": "16ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/247/ata/ata_16a_sessao_ordinaria_2026_-_10-08-26.pdf"
+ },
+ {
+  "id": 248,
+  "data": "2026-08-17",
+  "titulo": "17ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/248/ata/ata_17a_sessao_ordinaria_2026_-_17-08-26.pdf"
+ },
+ {
+  "id": 249,
+  "data": "2026-08-24",
+  "titulo": "18ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/249/ata/ata_18a_sessao_ordinaria_2026_-_24-08-26.pdf"
+ },
+ {
+  "id": 250,
+  "data": "2026-09-08",
+  "titulo": "19ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/250/ata/ata_19a_sessao_ordinaria_2026_-_08-09-26.pdf"
+ },
+ {
+  "id": 251,
+  "data": "2026-09-14",
+  "titulo": "20ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/251/ata/ata_20a_sessao_ordinaria_2026_-_14-09-26.pdf"
+ },
+ {
+  "id": 252,
+  "data": "2026-09-21",
+  "titulo": "21ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/252/ata/ata_21a_sessao_ordinaria_2026_-_21-09-26.pdf"
+ },
+ {
+  "id": 253,
+  "data": "2026-10-05",
+  "titulo": "22ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/253/ata/ata_22a_sessao_ordinaria_2026_-_05-10-26.pdf"
+ },
+ {
+  "id": 254,
+  "data": "2026-10-13",
+  "titulo": "23ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/254/ata/ata_23a_sessao_ordinaria_2026_-_13-10-26.pdf"
+ },
+ {
+  "id": 255,
+  "data": "2026-10-19",
+  "titulo": "5ª Extraordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/255/ata/ata_05a_sessao_extraordinaria_2026_-_19-10-26.pdf"
+ },
+ {
+  "id": 256,
+  "data": "2026-10-26",
+  "titulo": "24ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/256/ata/ata_24a_sessao_ordinaria_2026_-_26-10-26.pdf"
+ },
+ {
+  "id": 257,
+  "data": "2026-11-03",
+  "titulo": "25ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/257/ata/ata_25a_sessao_ordinaria_2026_-_03-11-26.pdf"
+ },
+ {
+  "id": 258,
+  "data": "2026-11-11",
+  "titulo": "6ª Extraordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 2,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/258/ata/ata_06a_sessao_extraordinaria_2026_-_11-11-26.pdf"
+ },
+ {
+  "id": 259,
+  "data": "2026-11-16",
+  "titulo": "26ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/259/ata/ata_26a_sessao_ordinaria_2026_-_16-11-26.pdf"
+ },
+ {
+  "id": 260,
+  "data": "2026-11-23",
+  "titulo": "27ª Ordinária da 2ª Sessão Legislativa da 1ª Legislatura",
+  "tipo": 1,
+  "url_ata": "https://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/260/ata/ata_27a_sessao_ordinaria_2026_-_23-11-26.pdf"
+ }
+]
