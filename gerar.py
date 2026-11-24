@@ -174,7 +174,10 @@ def bloco_vereador(pid):
                   f'<p class="small gd">{e(desc)}</p><ul class="props">{"".join(bloco_proposta(x) for x in lst)}</ul></details>')
     partido = f'<span class="pt">{e(p["partido"])}</span>' if p.get("partido") else ""
     status = "" if p.get("ativo") else '<span class="pt">não está no cargo</span>'
-    return (f'<details class="v" id="v{pid}" data-nome="{e(norm(p["nome"]))}"><summary><span class="who"><span class="nm">{e(p["nome"])}</span>{partido}{status}</span>'
+    atrib = (f'data-nome="{e(norm(p["nome"]))}" data-partido="{e(p.get("partido") or "")}" data-faltas="{len(faltas)}" '
+             f'data-lei="{len(por["lei"])}" data-homenagem="{len(por["homenagem"])}" '
+             f'data-melhoria="{len(por["melhoria"])}" data-nao="{cnt.get("Não", 0)}"')
+    return (f'<details class="v" id="v{pid}" {atrib}><summary><span class="who"><span class="nm">{e(p["nome"])}</span>{partido}{status}</span>'
             f'<span class="sum">{estev} de {total} sessões · {len(meus)} votações · {n} propostas</span></summary>'
             f'<div class="body"><h3>Presença</h3>{pres}<h3>Votos</h3>{votos}<h3>Propostas apresentadas</h3>{props}</div></details>')
 
@@ -254,6 +257,18 @@ sessoes_li = "".join(
     for s in SESSOES[:15])
 div_html = "".join(bloco_votacao(v) for v in DIVIDIDAS[:20]) or "<li>Nenhuma no período.</li>"
 
+partidos = sorted({p["partido"] for p in VER if p.get("partido")})
+opt_partidos = "".join(f'<option value="{e(x)}">{e(x)}</option>' for x in partidos)
+GRUPOS_TAB = [g_ for g_ in GRUPOS if g_[0] != "rotina"]
+linhas_tab = ""
+for p in sorted(VER, key=lambda p: norm(p["nome"])):
+    ms = [x for x in PROPS if p["id"] in x["autores"]]
+    cel = "".join(f'<td>{sum(1 for x in ms if x["grupo"] == gid)}</td>' for gid, _, _ in GRUPOS_TAB)
+    linhas_tab += f'<tr><th scope="row"><a href="#v{p["id"]}" class="abrir">{e(p["nome"])}</a></th>{cel}</tr>'
+cab_tab = "".join(f'<th scope="col">{e(n)}</th>' for _, n, _ in GRUPOS_TAB)
+tab_html = (f'<div class="rolar"><table class="tab"><thead><tr><th scope="col">Vereador</th>{cab_tab}</tr></thead>'
+            f'<tbody>{linhas_tab}</tbody></table></div>')
+
 PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
@@ -268,6 +283,14 @@ PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <p>Todo número tem um link. Toque nele para ver a página da Câmara de onde veio.</p>
 <p>Os textos das propostas são as ementas, os resumos registrados pela própria Câmara.</p>
 <p>Este site é independente. Não é da Câmara.</p></section>
+
+<nav class="box" aria-labelledby="comece"><h2 id="comece">Comece por aqui</h2>
+<ul class="rule">
+<li><a href="#buscaH">Moro numa rua ou bairro:</a> veja o que foi pedido para lá.</li>
+<li><a href="#vereadores">Quero ver um vereador:</a> presença, votos e propostas de cada um.</li>
+<li><a href="#trabalho">Homenagem ou trabalho?</a> quantas propostas de cada tipo cada vereador fez.</li>
+<li><a href="#repetidos">O problema que não some:</a> pedidos que voltam para o mesmo lugar.</li>
+<li><a href="#fontes">De onde vêm os números</a> e <a href="#erro">achou um erro?</a></li></ul></nav>
 
 <section aria-labelledby="buscaH"><h2 id="buscaH">Busque sua rua ou bairro</h2>
 <p class="small">Digite o nome e veja o que os vereadores pediram para lá, e quem pediu. Funciona sem acento.</p>
@@ -290,8 +313,22 @@ PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <section aria-labelledby="vereadores"><h2 id="vereadores">Os vereadores</h2>
 <label for="filtro" class="lbl">Procurar pelo nome</label>
 <input id="filtro" type="search" autocomplete="off" placeholder="Nome do vereador">
+<div class="ctrl"><div><label for="partido" class="lbl">Partido</label>
+<select id="partido"><option value="">Todos</option>{opt_partidos}</select></div>
+<div><label for="ordem" class="lbl">Ordenar por</label>
+<select id="ordem"><option value="nome">Nome (A a Z)</option>
+<option value="faltas">Mais sessões sem presença registrada</option>
+<option value="lei">Mais propostas de lei</option>
+<option value="homenagem">Mais homenagens</option>
+<option value="melhoria">Mais pedidos para os bairros</option>
+<option value="nao">Mais votos "Não"</option></select></div></div>
+<p class="small" id="mostrando" aria-live="polite"></p>
 <p class="small">Toque no nome para ver a presença, os votos e as propostas.</p>
 <div id="lista">{"".join(bloco_vereador(p["id"]) for p in VER)}</div></section>
+
+<section aria-labelledby="trabalho"><h2 id="trabalho">Homenagem ou trabalho?</h2>
+<p class="small">Quantas propostas cada vereador apresentou em cada grupo, pela mesma regra para todos (veja "Como agrupamos as propostas"). É só contagem: um grupo não vale mais que outro. Toque no nome para ler proposta por proposta.</p>
+{tab_html}</section>
 
 <section aria-labelledby="divisao"><h2 id="divisao">Votações em que os vereadores votaram diferente</h2>
 <p class="small">As 20 mais recentes. As demais aparecem na ficha de cada vereador.</p>
@@ -312,6 +349,17 @@ PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <li><b>Perguntas e cobranças:</b> requerimentos que pedem informações, documentos, cópias ou explicações.</li>
 <li><b>Outros:</b> tudo que sobrou.</li></ol>
 <p class="small">O site não interpreta o sentido do texto. Só usa o tipo da proposta e as palavras acima. Uma proposta com mais de um autor aparece na lista de cada autor. Quem discordar de um grupo pode ler o texto oficial pelo link da proposta.</p></section>
+
+<section aria-labelledby="fontes"><h2 id="fontes">De onde vêm os números</h2>
+<p>Tudo vem do sistema da própria Câmara ({link(SAPL + "/", "SAPL")}). Ninguém digita nada à mão: um programa baixa os dados todos os dias de madrugada.</p>
+<ul class="rule"><li><b>Presença:</b> lista de presença de cada sessão. "Sem presença registrada" não diz o motivo da ausência.</li>
+<li><b>Votos:</b> votações nominais, com o voto de cada vereador.</li>
+<li><b>Propostas e grupos:</b> o tipo e o texto oficial de cada matéria, agrupados pela regra abaixo.</li>
+<li><b>Pedidos repetidos e busca por rua:</b> nomes de lugares achados no texto, por um programa que pode errar.</li></ul>
+<p class="small">Se a coleta do dia vier incompleta ou estranha, o site não é trocado e continua com a última versão boa. Este site não mostra salários, porque eles não estão nesse sistema.</p></section>
+
+<section aria-labelledby="erro"><h2 id="erro">Achou um erro?</h2>
+<p>Toque no link de qualquer número ou proposta e compare com a página da Câmara. Se a Câmara corrigir um registro, o número muda na próxima atualização. Se a diferença continuar, o erro pode estar na forma como este site agrupa ou lê os dados.</p></section>
 
 <section aria-labelledby="palavras"><h2 id="palavras">Palavras que aparecem</h2>
 <p class="small">Explicações gerais, escritas por este site. Não vêm da Câmara.</p><dl>{gloss}</dl></section>

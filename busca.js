@@ -14,8 +14,8 @@ function buscar(D,q){var t=tokens(q);if(!t.length)return null;
   function el(tag,cls,txt){var n=document.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n}
   function render(){
     var r=buscar(D,q.value);out.textContent='';
-    if(r===null){if(q.value.trim())out.appendChild(el('p','vazio','Digite o nome da rua ou do bairro, por exemplo "Romão Gomes". Palavras como "rua" e "avenida" sozinhas não bastam.'));return}
-    if(!r.length){out.appendChild(el('p','vazio','Nenhum pedido encontrado nas 5 sessões lidas. Isso não quer dizer que nunca pediram: só lemos 5 sessões.'));return}
+    if(r===null){if(q.value.trim())out.appendChild(el('p','vazio','Digite o nome da rua ou do bairro, por exemplo um dos lugares mais citados abaixo. Palavras como "rua" e "avenida" sozinhas não bastam.'));return}
+    if(!r.length){out.appendChild(el('p','vazio','Nenhum pedido encontrado no período lido. Isso não quer dizer que nunca pediram: o site só lê propostas de vereadores desde a data inicial.'));return}
     out.appendChild(el('p','cnt2',r.length+(r.length===1?' proposta encontrada':' propostas encontradas')));
     r.forEach(function(d){
       var b=el('div','res');
@@ -32,11 +32,23 @@ function buscar(D,q){var t=tokens(q);if(!t.length)return null;
 })();
 
 (function(){
-  var f=document.getElementById('filtro'),l=document.getElementById('lista');
+  var f=document.getElementById('filtro'),l=document.getElementById('lista'),p=document.getElementById('partido'),
+      o=document.getElementById('ordem'),m=document.getElementById('mostrando');
   if(!f||!l)return;
-  f.addEventListener('input',function(){
-    var t=norm(f.value).trim();
-    Array.prototype.forEach.call(l.querySelectorAll('details.v'),function(d){
-      d.hidden=!!t&&(d.getAttribute('data-nome')||'').indexOf(t)<0});
-  });
+  var fichas=Array.prototype.slice.call(l.querySelectorAll('details.v'));
+  function aplicar(){
+    var t=norm(f.value).trim(),pt=p?p.value:'',campo=o?o.value:'nome',n=0;
+    fichas.sort(function(a,b){
+      if(campo==='nome')return a.getAttribute('data-nome')<b.getAttribute('data-nome')?-1:1;
+      var d=(+b.getAttribute('data-'+campo))-(+a.getAttribute('data-'+campo));
+      return d||(a.getAttribute('data-nome')<b.getAttribute('data-nome')?-1:1)});
+    fichas.forEach(function(d){
+      var ok=(!t||(d.getAttribute('data-nome')||'').indexOf(t)>-1)&&(!pt||d.getAttribute('data-partido')===pt);
+      d.hidden=!ok;if(ok)n++;l.appendChild(d)});
+    if(m)m.textContent='Mostrando '+n+' de '+fichas.length+' vereadores.';
+  }
+  [f,p,o].forEach(function(x){if(x)x.addEventListener(x===f?'input':'change',aplicar)});
+  aplicar();
+  Array.prototype.forEach.call(document.querySelectorAll('a.abrir'),function(a){
+    a.addEventListener('click',function(){var d=document.querySelector(a.getAttribute('href'));if(d){d.hidden=false;d.open=true}})});
 })();

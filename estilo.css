@@ -76,3 +76,9 @@ footer{font-size:.9375rem;color:var(--muted);border-top:1px solid var(--line);pa
 footer p{margin:0 0 .6rem}
 @media (max-width:420px){.sessions li{grid-template-columns:1fr}.sessions .acts{grid-column:1}h1{font-size:1.7rem}}
 @media (prefers-reduced-motion:no-preference){summary{transition:background .15s}summary:active{background:var(--soft)}}
+
+.ctrl{display:flex;flex-wrap:wrap;gap:.75rem;margin:.75rem 0}.ctrl>div{flex:1 1 12rem;min-width:0}
+select{width:100%;font:inherit;padding:.6rem;border:1px solid #767676;border-radius:.5rem;background:#fff;color:inherit}
+.rolar{overflow-x:auto}.tab{border-collapse:collapse;width:100%;min-width:30rem;font-size:.95rem}
+.tab th,.tab td{border-bottom:1px solid #ddd;padding:.5rem;text-align:right}.tab th:first-child,.tab thead th{text-align:left}
+.tab thead th{font-size:.8rem;vertical-align:bottom}
