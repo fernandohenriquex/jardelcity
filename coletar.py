@@ -182,16 +182,17 @@ def coletar():
     autores = tentar("autor") or []
     por_nome = {norm(p["nome"]): p["id"] for p in parl.values()}
     autor_para_parl = {}
+    # 1) mesmo nome do vereador. 2) o tipo de autor desses é o "tipo vereador"; os demais autores
+    # desse tipo são ligados pelo object_id. (object_id sozinho engana: comissões usam o mesmo campo.)
+    tipos_vereador = set()
     for a in autores:
-        alvo = None
-        if pegar(a, "object_id") in parl:               # chave genérica do SAPL
-            alvo = a["object_id"]
-        elif pegar(a, "autor_related") in parl:
-            alvo = a["autor_related"]
-        elif norm(pegar(a, "nome", padrao="")) in por_nome:  # plano B: mesmo nome
-            alvo = por_nome[norm(a["nome"])]
+        alvo = por_nome.get(norm(pegar(a, "nome", padrao="")))
         if alvo is not None:
             autor_para_parl[a["id"]] = alvo
+            tipos_vereador.add(pegar(a, "content_type"))
+    for a in autores:
+        if a["id"] not in autor_para_parl and pegar(a, "content_type") in tipos_vereador and pegar(a, "object_id") in parl:
+            autor_para_parl[a["id"]] = a["object_id"]
     relatorio.append(f"autores ligados a vereadores: {len(autor_para_parl)} de {len(autores)}")
 
     print("Matérias (pode demorar alguns minutos)...")
