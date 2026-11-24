@@ -1,0 +1,78 @@
+/* Layout: uma coluna estreita de leitura, lista de vereadores que abre ao toque. Fundo branco, sem cores de aprovação ou reprovação. */
+:root{
+  --bg:#ffffff; --ink:#1b2430; --muted:#566274; --line:#dde3ec; --soft:#f3f6fa; --link:#0a4c99;
+  --font:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:1.25rem 3rem}
+.wrap{max-width:40rem;margin-inline:auto;display:flex;flex-direction:column;gap:2rem}
+a{color:var(--link);text-underline-offset:.15em;text-decoration-thickness:.08em}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-radius:4px}
+h1{font-size:2rem;line-height:1.15;margin:0 0 .5rem;text-wrap:balance}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;text-wrap:balance}
+h3{font-size:1rem;margin:1.1rem 0 .3rem}
+p{margin:0 0 .75rem}
+.lead{font-size:1.15rem;color:var(--ink);margin:0}
+.box{background:var(--soft);border-radius:10px;padding:1rem 1.1rem}
+.box p:last-child{margin:0}
+.small,.meta{font-size:.9375rem;color:var(--muted)}
+.meta{margin:0 0 .25rem}
+ul{margin:0;padding:0;list-style:none}
+.sessions li{display:grid;grid-template-columns:7.5rem 1fr;gap:.1rem .75rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.sessions li:last-child{border-bottom:1px solid var(--line)}
+.sessions .acts{grid-column:2;font-size:.9375rem}
+.sessions .when{font-variant-numeric:tabular-nums;font-weight:700}
+.splits>li{padding:1rem 0;border-top:1px solid var(--line)}
+.splits>li:last-child{border-bottom:1px solid var(--line)}
+.splits h3{margin:0 0 .2rem}
+.splits p{margin:0 0 .35rem}
+details.v{border-top:1px solid var(--line)}
+details.v:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 .75rem;padding:.9rem 0;min-height:3.5rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";grid-row:1 / span 2;grid-column:2;font-size:1.6rem;line-height:1;color:var(--link);width:2rem;text-align:center}
+details[open]>summary::after{content:"\2013"}
+.who{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .6rem;min-width:0}
+.nm{font-weight:700}
+.pt{font-size:.8125rem;letter-spacing:.04em;color:var(--muted)}
+.sum{grid-column:1;font-size:.9375rem;color:var(--muted)}
+.body{padding:0 0 1.2rem}
+.body h3:first-child{margin-top:0}
+details.g{border:1px solid var(--line);border-radius:8px;margin:.5rem 0}
+details.g>summary{padding:.7rem .9rem;min-height:3rem;grid-template-columns:1fr auto auto;font-weight:700}
+details.g>summary::after{grid-row:auto;grid-column:3;width:1.6rem;font-size:1.4rem}
+.cnt{font-variant-numeric:tabular-nums;background:var(--soft);border-radius:999px;padding:.05rem .6rem;font-size:.9375rem;grid-column:2}
+.gd{padding:0 .9rem;margin:0 0 .4rem}
+.props{padding:0 .9rem .5rem}
+.props li{padding:.7rem 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.15rem}
+.tx{display:block}
+.g0{font-size:.9375rem;color:var(--muted);margin:.35rem 0}
+ol.rule{margin:0 0 .75rem;padding-left:1.4rem}
+ol.rule li{padding:.25rem 0}
+.lbl{display:block;font-weight:700;margin:.5rem 0 .3rem}
+input[type=search]{width:100%;font:inherit;font-size:1.0625rem;color:var(--ink);background:var(--bg);border:2px solid #8896a8;border-radius:8px;padding:.7rem .85rem;min-height:3rem;-webkit-appearance:none;appearance:none}
+input[type=search]:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-color:var(--link)}
+.chips2{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin:.75rem 0}
+.chip{font:inherit;font-size:.9375rem;color:var(--link);background:var(--bg);border:1.5px solid var(--link);border-radius:999px;padding:.3rem .8rem;min-height:2.5rem;cursor:pointer}
+.chip:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+#resultado{margin:.5rem 0}
+#resultado .res{padding:.9rem 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.2rem}
+#resultado .cnt2{font-weight:700;margin:.5rem 0}
+.aviso2{border-left:4px solid var(--link);background:var(--soft);padding:.8rem 1rem;border-radius:0 8px 8px 0;margin:0 0 1rem}
+.aviso2 p{margin:0 0 .5rem}.aviso2 p:last-child{margin:0}
+.rep{padding:.9rem 0;border-top:1px solid var(--line)}
+.rep h3{margin:0 0 .2rem}
+.vazio{background:var(--soft);padding:.8rem 1rem;border-radius:8px}
+h3.sub{margin-top:1.4rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem .9rem;font-variant-numeric:tabular-nums}
+.votes li{padding:.35rem 0}
+dl{margin:0}
+dt{font-weight:700;margin-top:.8rem}
+dd{margin:0}
+footer{font-size:.9375rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+footer p{margin:0 0 .6rem}
+@media (max-width:420px){.sessions li{grid-template-columns:1fr}.sessions .acts{grid-column:1}h1{font-size:1.7rem}}
+@media (prefers-reduced-motion:no-preference){summary{transition:background .15s}summary:active{background:var(--soft)}}

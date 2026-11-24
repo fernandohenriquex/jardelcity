@@ -1,0 +1,15 @@
+{
+  "cidade": "Jardinópolis",
+  "uf": "SP",
+  "sapl_url": "https://sapl.jardinopolis.sp.leg.br",
+  "desde": "2025-01-01",
+  "lugares_extras": [
+    "Estação Rodoviária",
+    "Cidade das Crianças"
+  ],
+  "validacao": {
+    "vereadores_ativos_min": 11,
+    "vereadores_ativos_max": 15,
+    "propostas_vereador_min": 10
+  }
+}
