@@ -1848,6 +1848,27 @@
   }
  },
  {
+  "id": 1897,
+  "sessao": 184,
+  "titulo": "Ordem do dia - dispensa de leitura/votação em bloc nº 3 de 2025",
+  "resultado": "Aprovado",
+  "votos": {
+   "7": "Sim",
+   "4": "Sim",
+   "19": "Sim",
+   "18": "Sim",
+   "10": "Sim",
+   "8": "Sim",
+   "9": "Sim",
+   "20": "Sim",
+   "17": "Sim",
+   "21": "Sim",
+   "16": "Sim",
+   "2": "Sim",
+   "22": "Sim"
+  }
+ },
+ {
   "id": 1898,
   "sessao": 184,
   "titulo": "Parecer Justiça e Redação - PRes - Leg nº 1 de 2025",
@@ -2499,23 +2520,23 @@
   }
  },
  {
-  "id": 1936,
+  "id": 1937,
   "sessao": 187,
-  "titulo": "Dispensa da leitura de pareceres das Com. Permanen nº 1 de 2025",
+  "titulo": "Parecer Justiça e Redação - PL - Exe nº 6 de 2025",
   "resultado": "Aprovado",
   "votos": {
-   "19": "Sim",
-   "18": "Sim",
+   "16": "Sim",
    "10": "Sim",
+   "7": "Sim",
+   "2": "Sim",
    "9": "Sim",
    "21": "Sim",
    "8": "Sim",
-   "17": "Sim",
-   "7": "Sim",
+   "18": "Sim",
+   "4": "Sim",
+   "19": "Sim",
    "22": "Sim",
-   "16": "Sim",
-   "2": "Sim",
-   "4": "Sim"
+   "17": "Sim"
   }
  },
  {
@@ -2699,46 +2720,6 @@
   }
  },
  {
-  "id": 1948,
-  "sessao": 188,
-  "titulo": "Dispensa de Parecer - Comissão Permanente/Temp nº 2 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "21": "Sim",
-   "2": "Sim",
-   "18": "Sim",
-   "8": "Sim",
-   "7": "Sim",
-   "4": "Sim",
-   "19": "Sim",
-   "17": "Sim",
-   "10": "Sim",
-   "22": "Sim",
-   "9": "Sim",
-   "16": "Sim"
-  }
- },
- {
-  "id": 1949,
-  "sessao": 188,
-  "titulo": "Projeto de Lei do Executivo nº 14 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "7": "Sim",
-   "2": "Sim",
-   "18": "Sim",
-   "4": "Sim",
-   "16": "Sim",
-   "21": "Sim",
-   "10": "Sim",
-   "8": "Sim",
-   "19": "Sim",
-   "9": "Sim",
-   "17": "Sim",
-   "22": "Sim"
-  }
- },
- {
   "id": 1950,
   "sessao": 189,
   "titulo": "Dispensa da leitura das correspondências nº 6 de 2025",
@@ -2820,6 +2801,27 @@
    "16": "Sim",
    "18": "Sim",
    "8": "Sim"
+  }
+ },
+ {
+  "id": 1955,
+  "sessao": 189,
+  "titulo": "Dispensa da leitura de pareceres/vot em bloco nº 4 de 2025",
+  "resultado": "Aprovado",
+  "votos": {
+   "9": "Sim",
+   "18": "Sim",
+   "22": "Sim",
+   "8": "Sim",
+   "10": "Sim",
+   "17": "Sim",
+   "7": "Sim",
+   "19": "Sim",
+   "16": "Sim",
+   "2": "Sim",
+   "20": "Sim",
+   "4": "Sim",
+   "21": "Sim"
   }
  },
  {
@@ -3009,6 +3011,48 @@
    "16": "Sim",
    "21": "Sim",
    "4": "Sim"
+  }
+ },
+ {
+  "id": 1967,
+  "sessao": 190,
+  "titulo": "Dispensa de Parecer - Comissão Permanente/Temp nº 3 de 2025",
+  "resultado": "Aprovado",
+  "votos": {
+   "4": "Sim",
+   "7": "Sim",
+   "10": "Sim",
+   "9": "Sim",
+   "2": "Sim",
+   "20": "Sim",
+   "8": "Sim",
+   "19": "Sim",
+   "21": "Sim",
+   "17": "Sim",
+   "16": "Sim",
+   "18": "Sim",
+   "22": "Sim"
+  }
+ },
+ {
+  "id": 1968,
+  "sessao": 190,
+  "titulo": "Projeto de Lei do Executivo nº 13 de 2025",
+  "resultado": "Aprovado",
+  "votos": {
+   "20": "Sim",
+   "17": "Sim",
+   "16": "Sim",
+   "18": "Sim",
+   "22": "Sim",
+   "8": "Sim",
+   "2": "Sim",
+   "9": "Sim",
+   "21": "Sim",
+   "19": "Sim",
+   "4": "Sim",
+   "7": "Sim",
+   "10": "Sim"
   }
  },
  {
@@ -3282,27 +3326,6 @@
    "16": "Sim",
    "21": "Sim",
    "4": "Sim"
-  }
- },
- {
-  "id": 1984,
-  "sessao": 192,
-  "titulo": "Dispensa da leitura de pareceres/vot em bloco nº 6 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "19": "Sim",
-   "8": "Sim",
-   "22": "Sim",
-   "2": "Sim",
-   "18": "Sim",
-   "17": "Sim",
-   "16": "Sim",
-   "20": "Sim",
-   "7": "Sim",
-   "21": "Sim",
-   "10": "Sim",
-   "4": "Sim",
-   "9": "Sim"
   }
  },
  {
@@ -3618,27 +3641,6 @@
    "16": "Sim",
    "21": "Sim",
    "4": "Sim"
-  }
- },
- {
-  "id": 2006,
-  "sessao": 193,
-  "titulo": "Substitutivo - Legislativo nº 3 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "9": "Sim",
-   "10": "Sim",
-   "4": "Sim",
-   "7": "Sim",
-   "2": "Sim",
-   "17": "Sim",
-   "20": "Sim",
-   "16": "Sim",
-   "22": "Sim",
-   "18": "Sim",
-   "8": "Sim",
-   "19": "Sim",
-   "21": "Sim"
   }
  },
  {
@@ -4557,27 +4559,6 @@
   }
  },
  {
-  "id": 2059,
-  "sessao": 197,
-  "titulo": "Requerimento de Regime de Urgência nº 2002 de 2025",
-  "resultado": "Rejeitado",
-  "votos": {
-   "20": "Não",
-   "2": "Não",
-   "7": "Não",
-   "18": "Não",
-   "21": "Não",
-   "4": "Não",
-   "22": "Não",
-   "16": "Não",
-   "9": "Não",
-   "19": "Não",
-   "17": "Não",
-   "10": "Não",
-   "8": "Não"
-  }
- },
- {
   "id": 2060,
   "sessao": 197,
   "titulo": "Ordem do dia - dispensa de leitura/votação em bloc nº 9 de 2025",
@@ -4932,27 +4913,6 @@
    "18": "Sim",
    "2": "Sim",
    "22": "Sim"
-  }
- },
- {
-  "id": 2083,
-  "sessao": 199,
-  "titulo": "Parecer Justiça e Redação nº 1001 de 2025",
-  "resultado": "Rejeitado",
-  "votos": {
-   "9": "Sim",
-   "7": "Sim",
-   "4": "Sim",
-   "2": "Não",
-   "22": "Não",
-   "18": "Não",
-   "17": "Sim",
-   "20": "Abstenção",
-   "10": "Sim",
-   "8": "Não",
-   "19": "Não",
-   "16": "Não",
-   "21": "Não"
   }
  },
  {
@@ -5439,27 +5399,6 @@
   }
  },
  {
-  "id": 2110,
-  "sessao": 200,
-  "titulo": "Parecer Fin. Orç. Con. Plan - PRes - Leg nº 4 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "20": "Sim",
-   "7": "Sim",
-   "8": "Sim",
-   "19": "Sim",
-   "17": "Sim",
-   "10": "Sim",
-   "18": "Sim",
-   "2": "Sim",
-   "9": "Sim",
-   "22": "Sim",
-   "16": "Sim",
-   "21": "Sim",
-   "4": "Sim"
-  }
- },
- {
   "id": 2111,
   "sessao": 200,
   "titulo": "Projeto de Resolução nº 4 de 2025",
@@ -5736,27 +5675,6 @@
   "id": 2124,
   "sessao": 200,
   "titulo": "Requerimento nº 85 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "20": "Sim",
-   "7": "Sim",
-   "8": "Sim",
-   "19": "Sim",
-   "17": "Sim",
-   "10": "Sim",
-   "18": "Sim",
-   "2": "Sim",
-   "9": "Sim",
-   "22": "Sim",
-   "16": "Sim",
-   "21": "Sim",
-   "4": "Sim"
-  }
- },
- {
-  "id": 2126,
-  "sessao": 201,
-  "titulo": "Parecer Justiça e Redação - PL - Exe nº 21 de 2025",
   "resultado": "Aprovado",
   "votos": {
    "20": "Sim",
@@ -7242,6 +7160,27 @@
    "16": "Sim",
    "21": "Sim",
    "4": "Sim"
+  }
+ },
+ {
+  "id": 2214,
+  "sessao": 207,
+  "titulo": "PROJ. DE DECRETO LEGISLATIVO - Rejeição de Contas nº 1 de 2025",
+  "resultado": "Rejeitado",
+  "votos": {
+   "20": "Sim",
+   "7": "Não",
+   "8": "Sim",
+   "19": "Sim",
+   "17": "Não",
+   "10": "Não",
+   "18": "Sim",
+   "2": "Não",
+   "9": "Sim",
+   "22": "Sim",
+   "16": "Sim",
+   "21": "Sim",
+   "4": "Não"
   }
  },
  {
@@ -8736,6 +8675,27 @@
   }
  },
  {
+  "id": 2299,
+  "sessao": 211,
+  "titulo": "Projeto de Resolução nº 7 de 2025",
+  "resultado": "Aprovado",
+  "votos": {
+   "7": "Sim",
+   "21": "Sim",
+   "18": "Sim",
+   "4": "Sim",
+   "8": "Sim",
+   "2": "Sim",
+   "22": "Sim",
+   "19": "Sim",
+   "16": "Sim",
+   "20": "Não",
+   "10": "Não",
+   "17": "Sim",
+   "9": "Não"
+  }
+ },
+ {
   "id": 2301,
   "sessao": 211,
   "titulo": "Requerimento de Regime de Urgência nº 54 de 2025",
@@ -8922,27 +8882,6 @@
    "20": "Sim",
    "16": "Sim",
    "21": "Sim"
-  }
- },
- {
-  "id": 2311,
-  "sessao": 212,
-  "titulo": "Projeto de Lei do Executivo nº 48 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "18": "Sim",
-   "2": "Sim",
-   "4": "Sim",
-   "17": "Sim",
-   "9": "Sim",
-   "19": "Sim",
-   "21": "Sim",
-   "10": "Sim",
-   "20": "Sim",
-   "8": "Sim",
-   "16": "Sim",
-   "22": "Sim",
-   "7": "Sim"
   }
  },
  {
@@ -11230,27 +11169,6 @@
    "10": "Sim",
    "2": "Sim",
    "21": "Sim"
-  }
- },
- {
-  "id": 2435,
-  "sessao": 219,
-  "titulo": "Parecer Justiça e Redação - PL - Exe nº 57 de 2025",
-  "resultado": "Aprovado",
-  "votos": {
-   "20": "Sim",
-   "7": "Sim",
-   "8": "Sim",
-   "19": "Sim",
-   "17": "Sim",
-   "10": "Sim",
-   "18": "Sim",
-   "2": "Sim",
-   "9": "Sim",
-   "22": "Sim",
-   "16": "Sim",
-   "21": "Sim",
-   "4": "Sim"
   }
  },
  {
@@ -17362,27 +17280,6 @@
   }
  },
  {
-  "id": 2787,
-  "sessao": 238,
-  "titulo": "Dispensa da leitura de pareceres/vot em bloco nº 8 de 2026",
-  "resultado": "Aprovado",
-  "votos": {
-   "21": "Sim",
-   "4": "Sim",
-   "2": "Sim",
-   "22": "Sim",
-   "7": "Sim",
-   "9": "Sim",
-   "18": "Sim",
-   "17": "Sim",
-   "19": "Sim",
-   "20": "Sim",
-   "16": "Sim",
-   "10": "Sim",
-   "8": "Sim"
-  }
- },
- {
   "id": 2789,
   "sessao": 238,
   "titulo": "Parecer Fin. Orç. Con. Plan - PL - Exe nº 6 de 2026",
@@ -19541,6 +19438,27 @@
   }
  },
  {
+  "id": 2911,
+  "sessao": 244,
+  "titulo": "Parecer Justiça e Redação - PL - Exe nº 24 de 2026",
+  "resultado": "Aprovado",
+  "votos": {
+   "20": "Sim",
+   "7": "Sim",
+   "8": "Sim",
+   "19": "Sim",
+   "17": "Sim",
+   "10": "Sim",
+   "18": "Sim",
+   "2": "Sim",
+   "9": "Sim",
+   "22": "Sim",
+   "16": "Sim",
+   "21": "Sim",
+   "4": "Sim"
+  }
+ },
+ {
   "id": 2914,
   "sessao": 244,
   "titulo": "Projeto de Lei do Executivo nº 31 de 2026",
@@ -20063,6 +19981,27 @@
    "18": "Sim",
    "4": "Sim",
    "8": "Sim"
+  }
+ },
+ {
+  "id": 2941,
+  "sessao": 245,
+  "titulo": "Parecer Justiça e Redação - PL - Exe nº 26 de 2026",
+  "resultado": "Aprovado",
+  "votos": {
+   "20": "Sim",
+   "7": "Sim",
+   "8": "Sim",
+   "19": "Sim",
+   "17": "Sim",
+   "10": "Sim",
+   "18": "Sim",
+   "2": "Sim",
+   "9": "Sim",
+   "22": "Sim",
+   "16": "Sim",
+   "21": "Sim",
+   "4": "Sim"
   }
  },
  {
@@ -26838,27 +26777,6 @@
    "2": "Sim",
    "22": "Sim",
    "10": "Sim"
-  }
- },
- {
-  "id": 3322,
-  "sessao": 260,
-  "titulo": "Projeto de Lei do Executivo nº 62 de 2026",
-  "resultado": "Aprovado",
-  "votos": {
-   "16": "Sim",
-   "9": "Sim",
-   "2": "Sim",
-   "8": "Sim",
-   "17": "Sim",
-   "19": "Sim",
-   "20": "Sim",
-   "7": "Sim",
-   "22": "Sim",
-   "4": "Sim",
-   "21": "Sim",
-   "10": "Sim",
-   "18": "Sim"
   }
  },
  {
