@@ -7,6 +7,7 @@ import collections
 import datetime
 import html
 import json
+import re
 import pathlib
 import sys
 
@@ -133,6 +134,14 @@ def bloco_proposta(p):
             f'<span class="meta">{link(materia_url(p["id"]), "Ler na Câmara")}</span></li>')
 
 
+def iniciais(nome):
+    base = re.sub(r"\(.*?\)", "", nome).split()
+    base = [w for w in base if w.lower() not in ("de", "da", "do", "dos", "das", "e")]
+    if not base:
+        return "?"
+    return (base[0][0] + (base[-1][0] if len(base) > 1 else "")).upper()
+
+
 def bloco_vereador(pid):
     p = PARL[pid]
     # presença
@@ -170,15 +179,18 @@ def bloco_vereador(pid):
         if not lst:
             props += f'<p class="g0">{e(nome)}: nenhuma no período.</p>'
             continue
-        props += (f'<details class="g"><summary><span>{e(nome)}</span><span class="cnt">{len(lst)}</span></summary>'
+        props += (f'<details class="g g-{gid}"><summary><span>{e(nome)}</span><span class="cnt">{len(lst)}</span></summary>'
                   f'<p class="small gd">{e(desc)}</p><ul class="props">{"".join(bloco_proposta(x) for x in lst)}</ul></details>')
     partido = f'<span class="pt">{e(p["partido"])}</span>' if p.get("partido") else ""
     status = "" if p.get("ativo") else '<span class="pt">não está no cargo</span>'
     atrib = (f'data-nome="{e(norm(p["nome"]))}" data-partido="{e(p.get("partido") or "")}" data-faltas="{len(faltas)}" '
              f'data-lei="{len(por["lei"])}" data-homenagem="{len(por["homenagem"])}" '
              f'data-melhoria="{len(por["melhoria"])}" data-nao="{cnt.get("Não", 0)}"')
-    return (f'<details class="v" id="v{pid}" {atrib}><summary><span class="who"><span class="nm">{e(p["nome"])}</span>{partido}{status}</span>'
-            f'<span class="sum">{estev} de {total} sessões · {len(meus)} votações · {n} propostas</span></summary>'
+    pct = round(100 * estev / total) if total else 0
+    return (f'<details class="v" id="v{pid}" {atrib}><summary><span class="av" aria-hidden="true">{e(iniciais(p["nome"]))}</span>'
+            f'<span class="info"><span class="who"><span class="nm">{e(p["nome"])}</span>{partido}{status}</span>'
+            f'<span class="sum">{estev} de {total} sessões · {len(meus)} votações · {n} propostas</span>'
+            f'<span class="bar" role="img" aria-label="Presença registrada em {estev} de {total} sessões"><i style="width:{pct}%"></i></span></span></summary>'
             f'<div class="body"><h3>Presença</h3>{pres}<h3>Votos</h3>{votos}<h3>Propostas apresentadas</h3>{props}</div></details>')
 
 
@@ -271,26 +283,31 @@ tab_html = (f'<div class="rolar"><table class="tab"><thead><tr><th scope="col">V
 
 PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap">
 <style>{CSS}</style>
 <div class="wrap">
-<header><h1>Vereadores de {e(CIDADE)}</h1>
-<p class="lead">O que cada vereador fez nas sessões da Câmara: se foi, como votou e o que propôs.</p></header>
+<header class="hero"><p class="kicker">Radar da Câmara · dados oficiais</p>
+<h1>Vereadores de <span>{e(CIDADE)}</span></h1>
+<p class="lead">O que cada vereador fez nas sessões da Câmara: se foi, como votou e o que propôs. Sem nota e sem opinião.</p>
+<ul class="stats" aria-label="Números do período">
+<li><b>{len(VER)}</b><span>{link(SAPL + "/parlamentar/", "vereadores no cargo")}</span></li>
+<li><b>{len(SESSOES)}</b><span>{link(URL_SESSOES, "sessões")}</span></li>
+<li><b>{len(VOTACOES)}</b><span>{link(URL_SESSOES, "votações nominais")}</span></li>
+<li><b>{len(PROPS)}</b><span>{link(SAPL + "/materia/pesquisar-materia", "propostas de vereadores")}</span></li></ul>
+<p class="atual">Período {periodo} · atualizado em {agora}</p></header>
 
 <section class="box" aria-labelledby="aviso"><h2 id="aviso">Antes de ler</h2>
 <p>Este site mostra só dados publicados pela Câmara Municipal. Não dá nota e não dá opinião.</p>
-<p>Período: {periodo}. Tem {link(URL_SESSOES, str(len(SESSOES)))} sessões, {len(VOTACOES)} votações nominais e {len(PROPS)} propostas de vereadores. Atualizado em {agora}.</p>
 <p>Todo número tem um link. Toque nele para ver a página da Câmara de onde veio.</p>
 <p>Os textos das propostas são as ementas, os resumos registrados pela própria Câmara.</p>
 <p>Este site é independente. Não é da Câmara.</p></section>
 
-<nav class="box" aria-labelledby="comece"><h2 id="comece">Comece por aqui</h2>
-<ul class="rule">
-<li><a href="#buscaH">Moro numa rua ou bairro:</a> veja o que foi pedido para lá.</li>
-<li><a href="#vereadores">Quero ver um vereador:</a> presença, votos e propostas de cada um.</li>
-<li><a href="#trabalho">Homenagem ou trabalho?</a> quantas propostas de cada tipo cada vereador fez.</li>
-<li><a href="#repetidos">O problema que não some:</a> pedidos que voltam para o mesmo lugar.</li>
-<li><a href="#fontes">De onde vêm os números</a> e <a href="#erro">achou um erro?</a></li></ul></nav>
+<nav aria-labelledby="comece"><h2 id="comece" class="sr">Comece por aqui</h2>
+<div class="atalhos">
+<a href="#buscaH"><b>Moro numa rua ou bairro</b><span>Veja o que foi pedido para lá e por quem</span></a>
+<a href="#vereadores"><b>Quero ver um vereador</b><span>Presença, votos e propostas de cada um</span></a>
+<a href="#trabalho"><b>Homenagem ou trabalho?</b><span>Quantas propostas de cada tipo</span></a>
+<a href="#repetidos"><b>O problema que não some</b><span>Pedidos que voltam para o mesmo lugar</span></a></div></nav>
 
 <section aria-labelledby="buscaH"><h2 id="buscaH">Busque sua rua ou bairro</h2>
 <p class="small">Digite o nome e veja o que os vereadores pediram para lá, e quem pediu. Funciona sem acento.</p>
