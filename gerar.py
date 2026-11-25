@@ -138,6 +138,17 @@ def bloco_proposta(p):
             f'<span class="meta">{link(materia_url(p["id"]), "Ler na Câmara")}</span></li>')
 
 
+GRUPOS_TAB = [x for x in GRUPOS if x[0] != "rotina"]
+
+
+def avatar(pid, nome):
+    """Foto do vereador só se o arquivo fotos/<id>.jpg (ou .png/.webp) existir no repositório; senão, iniciais."""
+    for ext in ("jpg", "jpeg", "png", "webp"):
+        if (AQUI / "fotos" / f"{pid}.{ext}").exists():
+            return f'<img class="av" src="fotos/{pid}.{ext}" alt="" width="64" height="64" loading="lazy">'
+    return f'<span class="av" aria-hidden="true">{e(iniciais(nome))}</span>'
+
+
 def iniciais(nome):
     base = re.sub(r"\(.*?\)", "", nome).split()
     base = [w for w in base if w.lower() not in ("de", "da", "do", "dos", "das", "e")]
@@ -194,23 +205,56 @@ def bloco_vereador(pid):
              f'data-lei="{len(por["lei"])}" data-homenagem="{len(por["homenagem"])}" '
              f'data-melhoria="{len(por["melhoria"])}" data-nao="{cnt.get("Não", 0)}"')
     pct = round(100 * estev / total) if total else 0
-    return (f'<details class="v" id="v{pid}" {atrib}><summary><span class="av" aria-hidden="true">{e(iniciais(p["nome"]))}</span>'
-            f'<span class="info"><span class="who"><span class="nm">{e(p["nome"])}</span>{partido}{status}</span>'
-            f'<span class="sum">{estev} de {total} sessões · {len(meus)} votações · {n} propostas</span>'
-            f'<span class="bar" role="img" aria-label="Presença registrada em {estev} de {total} sessões"><i style="width:{pct}%"></i></span></span></summary>'
-            f'<div class="body"><h3>Presença</h3>{pres}<h3>Votos</h3>{votos}<h3>Propostas apresentadas</h3>{props}</div></details>')
+    pastel = ["#fde7e3", "#fdf6d9", "#e6f7e1", "#e3eefc", "#efe6fb", "#fde6f1"][pid % 6]
+    soma = sum(len(por[gid]) for gid, _, _ in GRUPOS_TAB)
+    linhas = "".join(f'<li><i class="dot d-{gid}"></i><span>{e(nome)}</span><b>{len(por[gid])}</b></li>' for gid, nome, _ in GRUPOS_TAB)
+    segs = "".join(f'<i class="s-{gid}" style="flex:{len(por[gid])}"></i>' for gid, _, _ in GRUPOS_TAB if por[gid])
+    seg = f'<div class="seg" aria-hidden="true">{segs}</div>' if soma else ""
+    ver_div = (f'<a class="abrir mais-l" href="#v{pid}">Ver quando votou diferente ({len(meus_div)}) →</a>' if meus_div else "")
+    return (f'<article class="v cr" id="v{pid}" {atrib}>'
+            f'<div class="cr-top" style="background:{pastel}">{avatar(pid, p["nome"])}'
+            f'<div><h3 class="nm">{e(p["nome"])}</h3><p class="tags">{partido}{status}</p></div></div>'
+            f'<div class="cr-pres"><span class="donut" style="--p:{pct}" role="img" aria-label="{pct}% das sessões"><b>{pct}%</b></span>'
+            f'<p><b>{link(URL_PRESENCA, str(estev))} de {link(URL_SESSOES, str(total))}</b> sessões até agora<br>'
+            f'<span class="meta">{len(faltas)} sem presença nem voto registrados</span></p></div>'
+            f'<p class="mini"><b>{len(meus)}</b> votações nominais: {cnt.get("Sim", 0)} Sim · {cnt.get("Não", 0)} Não · {cnt.get("Abstenção", 0)} abstenção</p>'
+            f'<h4>O que propôs até agora</h4>{seg}<ul class="gl">{linhas}</ul>{ver_div}'
+            f'<details class="mais"><summary>Ver presença, votos e propostas, uma por uma</summary>'
+            f'<div class="body"><h3>Presença</h3>{pres}<h3>Votos</h3>{votos}<h3>Propostas apresentadas</h3>{props}</div></details>'
+            f'<a class="oficial" href="{e(SAPL)}/parlamentar/{pid}">Ficha oficial na Câmara ↗</a></article>')
 
 
-# --------------------------------------------- busca e problemas repetidos
+
+
+# ------------------------------------------------ números gerais da cidade
+MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+MESES_LONGOS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+
+
+def mes_ano(iso):
+    a, m, _ = iso.split("-")
+    return f"{MESES[int(m) - 1]} {a}"
+
+
+CONTA = [x for x in PROPS if x["grupo"] != "rotina"]  # papéis de rotina da sessão ficam fora da conta
+TOTAL = len(CONTA)
+POR_GRUPO = collections.Counter(x["grupo"] for x in CONTA)
+TIPO_ASSUNTO = {}
+from regras import tipos_do_pedido  # noqa: E402
+
+# --------------------------------------------- dados para a busca e o painel
 indice = []
-for p in PROPS:
-    if p["grupo"] == "rotina":
-        continue
+for p in sorted(CONTA, key=lambda x: (x["data"], x["id"]), reverse=True):
     indice.append(dict(id=p["id"], tipo=rotulo(p), data=br(p["data"]), texto=p["ementa"],
-                       autores=[NOME[a] for a in p["autores"]], lugares=sorted({n for n, _, _ in p["lugares"]}),
-                       grupo=NOME_GRUPO[p["grupo"]], url=materia_url(p["id"])))
-DADOS = json.dumps(indice, ensure_ascii=False).replace("</", "<\\/")
+                       autores=[NOME[a] for a in p["autores"]],
+                       lugares=sorted({n for n, _, _ in p["lugares"]}),
+                       g=p["grupo"], gn=NOME_GRUPO[p["grupo"]],
+                       ass=tipos_do_pedido(p["ementa"]) if so_pedido(p["tipo"]) else [],
+                       url=materia_url(p["id"])))
+PARTIDOS = {p["nome"]: p.get("partido") or "" for p in VER}
+DADOS = json.dumps(dict(itens=indice, partidos=PARTIDOS), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
+# ---------------------------------------------------- pedidos que se repetem
 pedidos = []
 for p in PROPS:
     principais = [(n, c) for n, c, ref in p["lugares"] if not ref]  # pontos de referência não contam
@@ -226,27 +270,85 @@ def item_rep(p):
             f'<span class="meta">{link(materia_url(p["id"]), "Ler na Câmara")}</span></li>')
 
 
-def lista_rep(grupos, com_tipo):
+def lista_rep(grupos):
     saida = ""
-    ordem = sorted(grupos, key=lambda kv: -len(kv[1]["itens"]))
-    for chave, v in ordem:
+    for chave, v in sorted(grupos, key=lambda kv: -len(kv[1]["itens"])):
         itens = sorted(v["itens"].values(), key=lambda p: p["data"])
-        titulo = f'{e(v["nome"])} · {e(chave[1])}' if com_tipo else e(v["nome"])
         datas = ", ".join(br(p["data"]) for p in itens)
-        saida += (f'<div class="rep"><h3>{titulo}</h3><p class="meta">{len(itens)} pedidos. Datas: {datas}</p>'
+        saida += (f'<div class="rep"><h3>{e(v["nome"])}</h3><p class="meta">{len(itens)} pedidos. Datas: {datas}</p>'
                   f'<ul class="props">{"".join(item_rep(p) for p in itens)}</ul></div>')
     return saida
 
 
-rep_html = lista_rep(REP, True) if REP else (
-    '<p class="vazio">Nenhum tipo de pedido apareceu mais de uma vez para o mesmo lugar no período.</p>')
-mesmo_html = lista_rep(MESMO, False) if MESMO else "<p class='vazio'>Nenhum.</p>"
+def cartao_rep(chave, v, oculto):
+    itens = sorted(v["itens"].values(), key=lambda p: p["data"])
+    quem = {a for p in itens for a in p["autores"]}
+    datas = [p["data"] for p in itens]
+    periodo_rep = f"de {mes_ano(datas[0])} a {mes_ano(datas[-1])}" if mes_ano(datas[0]) != mes_ano(datas[-1]) else mes_ano(datas[0])
+    qtd = f"{len(quem)} vereador pediu" if len(quem) == 1 else f"{len(quem)} vereadores pediram"
+    return (f'<article class="rc{" extra" if oculto else ""}"{" hidden" if oculto else ""}><div class="rc-n"><b>{len(itens)}</b><span>vezes</span></div>'
+            f'<div class="rc-t"><h3>{e(v["nome"])}</h3><p><span class="tag">{e(chave[1])}</span> '
+            f'<span class="meta">{qtd} · {periodo_rep}</span></p></div>'
+            f'<details class="rc-d"><summary>Ver pedidos e cobrar →</summary>'
+            f'<ul class="props">{"".join(item_rep(p) for p in itens)}</ul></details></article>')
 
-# ------------------------------------------------------------------ página
-agora = datetime.date.today().strftime("%d/%m/%Y")
+
+rep_ordenado = sorted(REP, key=lambda kv: -len(kv[1]["itens"]))
+POR_PAGINA_REP = 9
+rep_cards = "".join(cartao_rep(k, v, i >= POR_PAGINA_REP) for i, (k, v) in enumerate(rep_ordenado))
+rep_mais = (f'<button type="button" class="botao" id="rep-mais" data-passo="{POR_PAGINA_REP}">Mostrar mais ruas ({len(rep_ordenado) - POR_PAGINA_REP} na fila)</button>'
+            if len(rep_ordenado) > POR_PAGINA_REP else "")
+rep_html = (f'<div class="rc-grid">{rep_cards}</div>{rep_mais}' if REP else
+            '<p class="vazio">Nenhum tipo de pedido apareceu mais de uma vez para o mesmo lugar no período.</p>')
+mesmo_html = lista_rep(MESMO) if MESMO else "<p class='vazio'>Nenhum.</p>"
+
+# --------------------------------------------------------- partes da página
+agora_utc = datetime.datetime.now(datetime.timezone.utc)
+agora_br = agora_utc - datetime.timedelta(hours=3)
+agora = agora_br.strftime("%d/%m/%Y")
+conferido = f"{agora_br.day} de {MESES_LONGOS[agora_br.month - 1]} às {agora_br:%H:%M}"
 periodo = f"{br(SESSOES[-1]['data'])} a {br(SESSOES[0]['data'])}" if SESSOES else ""
+desde_txt = f"{MESES_LONGOS[int(desde[5:7]) - 1]} de {desde[:4]}" if len(desde) >= 7 and desde[0] != "0" else "o início do período"
 CSS = (AQUI / "estilo.css").read_text(encoding="utf-8")
 JS = (AQUI / "busca.js").read_text(encoding="utf-8")
+UF = CFG.get("uf", "")
+marca = CFG.get("marca") or [CIDADE.upper(), ""]
+n = lambda x: f"{x:,}".replace(",", ".")
+
+DESC_GRUPO = {
+    "melhoria": "Tapar buraco, podar árvore, trocar lâmpada, pintar lombada. É um pedido: a Prefeitura decide se faz.",
+    "pergunta": "Pedidos de explicação, documentos ou informações à Prefeitura e a outros órgãos.",
+    "homenagem": "Parabéns, votos de pesar, título de cidadão, nome de rua e datas comemorativas.",
+    "lei": "Projetos que criam regra, programa ou obrigação na cidade, e mudanças em projetos.",
+    "outros": "O que não coube nos outros grupos.",
+}
+barra = "".join(f'<i class="s-{gid}" style="flex:{POR_GRUPO[gid]}"></i>' for gid, _, _ in GRUPOS_TAB if POR_GRUPO[gid])
+cartoes_grupo = "".join(
+    f'<article class="gc gc-{gid}"><p class="gc-n">{n(POR_GRUPO[gid])}</p><h3>{e(nome)} <span>até agora</span></h3>'
+    f'<p class="gc-d">{e(DESC_GRUPO[gid])}</p><button type="button" class="ver-todas" data-g="{gid}">Ver todas →</button></article>'
+    for gid, nome, _ in GRUPOS_TAB)
+
+votos_iguais = sum(1 for v in VOTACOES if not divisao(v))
+pct_iguais = round(100 * votos_iguais / len(VOTACOES)) if VOTACOES else 0
+sem_lista = sum(1 for s in SESSOES if not PRES.get(s["id"]))
+partidos = sorted({p["partido"] for p in VER if p.get("partido")})
+opt_partidos = "".join(f'<option value="{e(x)}">{e(x)}</option>' for x in partidos)
+cards = "".join(bloco_vereador(p["id"]) for p in VER)
+
+chips = ""
+vistos = {}
+for p in CONTA:
+    for nome, chave, _ in p["lugares"]:
+        vistos.setdefault(chave, [nome, 0])[1] += 1
+for chave, (nome, k) in sorted(vistos.items(), key=lambda kv: -kv[1][1])[:10]:
+    chips += f'<button type="button" class="chip" data-q="{e(nome)}">{e(nome)}</button>'
+
+sessoes_li = "".join(
+    f'<li><span class="when">{link(resumo(s["id"]), br(s["data"]))}</span><span class="what">{e(s["titulo"])}</span>'
+    f'<span class="acts">{link(resumo(s["id"]), "Presença e votos")}'
+    + (f' · {link(s["url_ata"], "Ata (PDF)")}' if s.get("url_ata") else "") + "</span></li>"
+    for s in SESSOES[:15])
+div_html = "".join(bloco_votacao(v) for v in DIVIDIDAS[:20]) or "<li>Nenhuma no período.</li>"
 GLOSSARIO = [
     ("Sessão ordinária", "Reunião marcada no calendário da Câmara."),
     ("Sessão extraordinária", "Reunião convocada fora do calendário, para tratar de um assunto específico."),
@@ -262,111 +364,91 @@ GLOSSARIO = [
     ("Voto nominal", "Votação em que o voto de cada vereador fica registrado com o nome."),
 ]
 gloss = "".join(f"<dt>{e(a)}</dt><dd>{e(b)}</dd>" for a, b in GLOSSARIO)
-chips = ""
-vistos = {}
-for p in PROPS:
-    for nome, chave, _ in p["lugares"]:
-        vistos.setdefault(chave, [nome, 0])[1] += 1
-for chave, (nome, n) in sorted(vistos.items(), key=lambda kv: -kv[1][1])[:14]:
-    chips += f'<button type="button" class="chip" data-q="{e(nome)}">{e(nome)}</button>'
-sessoes_li = "".join(
-    f'<li><span class="when">{link(resumo(s["id"]), br(s["data"]))}</span><span class="what">{e(s["titulo"])}</span>'
-    f'<span class="acts">{link(resumo(s["id"]), "Presença e votos")}'
-    + (f' · {link(s["url_ata"], "Ata (PDF)")}' if s.get("url_ata") else "") + "</span></li>"
-    for s in SESSOES[:15])
-div_html = "".join(bloco_votacao(v) for v in DIVIDIDAS[:20]) or "<li>Nenhuma no período.</li>"
+URL_MATERIAS = f"{SAPL}/materia/pesquisar-materia"
+RADAR = ('<svg class="radar" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="5" fill="currentColor"/>'
+         '<path d="M19 19a18 18 0 0 0 0 26M45 19a18 18 0 0 1 0 26" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>'
+         '<path d="M10 10a31 31 0 0 0 0 44M54 10a31 31 0 0 1 0 44" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>')
 
-partidos = sorted({p["partido"] for p in VER if p.get("partido")})
-opt_partidos = "".join(f'<option value="{e(x)}">{e(x)}</option>' for x in partidos)
-GRUPOS_TAB = [g_ for g_ in GRUPOS if g_[0] != "rotina"]
-linhas_tab = ""
-for p in sorted(VER, key=lambda p: norm(p["nome"])):
-    ms = [x for x in PROPS if p["id"] in x["autores"]]
-    cel = "".join(f'<td>{sum(1 for x in ms if x["grupo"] == gid)}</td>' for gid, _, _ in GRUPOS_TAB)
-    linhas_tab += f'<tr><th scope="row"><a href="#v{p["id"]}" class="abrir">{e(p["nome"])}</a></th>{cel}</tr>'
-cab_tab = "".join(f'<th scope="col">{e(n)}</th>' for _, n, _ in GRUPOS_TAB)
-tab_html = (f'<div class="rolar"><table class="tab"><thead><tr><th scope="col">Vereador</th>{cab_tab}</tr></thead>'
-            f'<tbody>{linhas_tab}</tbody></table></div>')
-
-PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
+PAGINA = f"""<title>Radar {e(CIDADE)}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>{CSS}</style>
 <div class="wrap">
-<header class="hero"><p class="kicker">Radar da Câmara · dados oficiais</p>
-<h1>Vereadores de <span>{e(CIDADE)}</span></h1>
-<p class="lead">O que cada vereador fez nas sessões da Câmara: se foi, como votou e o que propôs. Sem nota e sem opinião.</p>
-<ul class="stats" aria-label="Números do período">
-<li><b>{len(VER)}</b><span>{link(SAPL + "/parlamentar/", "vereadores no cargo")}</span></li>
-<li><b>{len(SESSOES)}</b><span>{link(URL_SESSOES, "sessões")}</span></li>
-<li><b>{len(VOTACOES)}</b><span>{link(URL_SESSOES, "votações nominais")}</span></li>
-<li><b>{len(PROPS)}</b><span>{link(SAPL + "/materia/pesquisar-materia", "propostas de vereadores")}</span></li></ul>
-<p class="atual">Período {periodo} · atualizado em {agora}</p></header>
+<header class="top">
+<p class="pill"><i class="live"></i><span id="conf" data-t="{agora_utc.strftime('%Y-%m-%dT%H:%M:%SZ')}">Dados conferidos na Câmara em {agora}</span></p>
+<h1 class="logo" aria-label="Radar {e(CIDADE)}">{RADAR}<span class="l1">RADAR</span><span class="l2"><em>{e(marca[0])}</em>{e(marca[1])}</span></h1>
+<p class="sub"><b>Raio-X de {e(CIDADE)}-{e(UF)}.</b> O que cada vereador fez desde {desde_txt}, contado todo dia.</p>
+<div class="grande"><p class="gl-t">Propostas apresentadas pelos {len(VER)} vereadores desde {desde_txt}</p>
+<p class="gl-n">{link(URL_MATERIAS, n(TOTAL))}</p>
+<p class="gl-s">Só conta proposta em que um vereador é autor. Fora: prefeito, Mesa, comissões e papéis de rotina da sessão. {link(URL_SESSOES, n(len(SESSOES)) + " sessões")} e {n(len(VOTACOES))} votações nominais lidas.</p></div>
+<ul class="tiles">
+<li class="t-melhoria"><b>{n(POR_GRUPO["melhoria"])}</b><span>{link(URL_MATERIAS, "pedidos nos bairros")} até agora</span></li>
+<li class="t-pergunta"><b>{n(POR_GRUPO["pergunta"])}</b><span>{link(URL_MATERIAS, "perguntas e cobranças")} até agora</span></li>
+<li class="t-homenagem"><b>{n(POR_GRUPO["homenagem"])}</b><span>{link(URL_MATERIAS, "homenagens")} até agora</span></li>
+<li class="t-lei"><b>{n(POR_GRUPO["lei"])}</b><span>{link(URL_MATERIAS, "propostas de lei")} até agora</span></li></ul>
+<p class="atual">Última conferência na Câmara: {conferido} (horário de Brasília). O robô volta lá todo dia de madrugada.
+Este site mostra só dados da Câmara. Não dá nota e não dá opinião.</p>
+</header>
 
-<section class="box" aria-labelledby="aviso"><h2 id="aviso">Antes de ler</h2>
-<p>Este site mostra só dados publicados pela Câmara Municipal. Não dá nota e não dá opinião.</p>
-<p>Todo número tem um link. Toque nele para ver a página da Câmara de onde veio.</p>
-<p>Os textos das propostas são as ementas, os resumos registrados pela própria Câmara.</p>
-<p>Este site é independente. Não é da Câmara.</p></section>
-
-<nav aria-labelledby="comece"><h2 id="comece" class="sr">Comece por aqui</h2>
-<div class="atalhos">
-<a href="#buscaH"><b>Moro numa rua ou bairro</b><span>Veja o que foi pedido para lá e por quem</span></a>
-<a href="#vereadores"><b>Quero ver um vereador</b><span>Presença, votos e propostas de cada um</span></a>
-<a href="#trabalho"><b>Homenagem ou trabalho?</b><span>Quantas propostas de cada tipo</span></a>
-<a href="#repetidos"><b>O problema que não some</b><span>Pedidos que voltam para o mesmo lugar</span></a></div></nav>
-
-<section aria-labelledby="buscaH"><h2 id="buscaH">Busque sua rua ou bairro</h2>
-<p class="small">Digite o nome e veja o que os vereadores pediram para lá, e quem pediu. Funciona sem acento.</p>
-<label for="busca" class="lbl">Rua, bairro ou lugar</label>
-<input id="busca" type="search" autocomplete="off" enterkeyhint="search" placeholder="Ex.: nome de uma rua ou bairro">
-<div class="chips2" aria-label="Lugares citados nos pedidos"><span class="small">Lugares mais citados:</span> {chips}</div>
-<div id="resultado" aria-live="polite"></div>
-<p class="small">Pedido repetido não prova que a Prefeitura ignorou. Veja mais em <a href="#repetidos">Pedidos que se repetem</a>.</p>
+<section aria-labelledby="buscaH"><p class="kick">Comece por aqui</p><h2 id="buscaH">O que pediram pelo seu bairro?</h2>
+<p class="small">Digite o bairro ou a rua. Sem nada digitado, você vê a cidade inteira. Funciona sem acento.</p>
+<div class="campo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+<input id="busca" type="search" autocomplete="off" enterkeyhint="search" placeholder="Digite seu bairro ou sua rua" aria-label="Bairro ou rua"></div>
+<div class="chips2" aria-label="Lugares citados nos pedidos">{chips}</div>
+<div id="painel" class="painel" aria-live="polite"></div>
+<p class="small">Pedido repetido não prova que a Prefeitura ignorou. Veja mais em <a href="#repetidos">O problema que não some</a>.</p>
 <script type="application/json" id="dados">{DADOS}</script></section>
 
-<section aria-labelledby="repetidos"><h2 id="repetidos">Pedidos que se repetem para o mesmo lugar</h2>
+<section aria-labelledby="repetidos"><p class="kick">Só aqui</p><h2 id="repetidos">O problema que não some</h2>
+<p class="small">Quando o mesmo tipo de pedido volta várias vezes para a mesma rua, é sinal de que o assunto continua em pauta. O site da Câmara não mostra isso: nós cruzamos os pedidos um por um.</p>
 <div class="aviso2"><p><b>Pedido repetido não prova que a Prefeitura ignorou.</b></p>
 <p>O pedido anterior pode ter sido atendido e o problema voltou. A obra pode estar em andamento. A resposta pode estar em outro documento. Dois vereadores podem pedir coisas parecidas sem saber um do outro. Este site não sabe se houve resposta.</p></div>
-<p>Aqui contamos quando <b>o mesmo tipo de pedido</b> (como asfalto, iluminação ou limpeza) foi feito <b>mais de uma vez para o mesmo lugar</b>. Contam só indicações e requerimentos. Os lugares são achados pelo nome de rua, bairro ou prédio escrito em cada pedido. Nomes que aparecem só como referência (\"entre a Rua A e a Rua B\", \"próximo à\") não entram na conta, mas o programa pode errar, então confira o texto de cada pedido. Os tipos vêm de palavras do texto. A contagem é feita por este site, e cada pedido listado tem o seu link.</p>
 {rep_html}
-<h3 class="sub">Mesmo lugar, assuntos diferentes</h3>
-<p class="small">Lugares que aparecem em mais de um pedido, com assuntos que não são do mesmo tipo. Não é repetição.</p>
-{mesmo_html}</section>
+<details class="como"><summary>Como contamos</summary>
+<p>Contamos quando <b>o mesmo tipo de pedido</b> (como asfalto, iluminação ou limpeza) foi feito <b>mais de uma vez para o mesmo lugar</b>. Contam só indicações e requerimentos. Os lugares são achados pelo nome de rua, bairro ou prédio escrito em cada pedido. Nomes que aparecem só como referência ("entre a Rua A e a Rua B", "próximo à") não entram na conta, mas o programa pode errar, então confira o texto de cada pedido. Os tipos vêm de palavras do texto.</p></details>
+<details class="como"><summary>Mesmo lugar, assuntos diferentes</summary>
+<p class="small">Lugares que aparecem em mais de um pedido, com assuntos que não são do mesmo tipo. Não é repetição.</p>{mesmo_html}</details></section>
 
-<section aria-labelledby="vereadores"><h2 id="vereadores">Os vereadores</h2>
-<label for="filtro" class="lbl">Procurar pelo nome</label>
-<input id="filtro" type="search" autocomplete="off" placeholder="Nome do vereador">
-<div class="ctrl"><div><label for="partido" class="lbl">Partido</label>
-<select id="partido"><option value="">Todos</option>{opt_partidos}</select></div>
-<div><label for="ordem" class="lbl">Ordenar por</label>
-<select id="ordem"><option value="nome">Nome (A a Z)</option>
-<option value="faltas">Mais sessões sem presença</option>
-<option value="lei">Mais propostas de lei</option>
-<option value="homenagem">Mais homenagens</option>
-<option value="melhoria">Mais pedidos para os bairros</option>
+<section aria-labelledby="trabalho"><p class="kick">O trabalho da Câmara</p><h2 id="trabalho">Homenagem ou trabalho?</h2>
+<p class="small">São {n(TOTAL)} propostas até agora, e a conta sobe toda semana. Toque em um grupo para ler cada uma. Um grupo não vale mais que outro: é só contagem.</p>
+<div class="seg seg-g" aria-hidden="true">{barra}</div>
+<div class="gcs">{cartoes_grupo}</div>
+<div id="lista-grupo" class="painel" hidden></div></section>
+
+<section aria-labelledby="vereadores"><p class="kick">Um por um</p><h2 id="vereadores">Os {len(VER)} vereadores</h2>
+<p class="small">Até agora, em {pct_iguais} de cada 100 votações todos votaram igual. Toque nos números do crachá para ver os detalhes.</p>
+<div class="ctrl"><div><label for="filtro" class="lbl">Buscar por nome</label><input id="filtro" type="search" autocomplete="off" placeholder="Nome do vereador"></div>
+<div><label for="partido" class="lbl">Partido</label><select id="partido"><option value="">Todos</option>{opt_partidos}</select></div>
+<div><label for="ordem" class="lbl">Ordenar por</label><select id="ordem"><option value="nome">Nome (A a Z)</option>
+<option value="faltas">Mais sessões sem presença</option><option value="lei">Mais propostas de lei</option>
+<option value="homenagem">Mais homenagens</option><option value="melhoria">Mais pedidos para os bairros</option>
 <option value="nao">Mais votos "Não"</option></select></div></div>
 <p class="small" id="mostrando" aria-live="polite"></p>
-<p class="small">Toque no nome para ver a presença, os votos e as propostas.</p>
-<div id="lista">{"".join(bloco_vereador(p["id"]) for p in VER)}</div></section>
+<div id="lista">{cards}</div></section>
 
-<section aria-labelledby="trabalho"><h2 id="trabalho">Homenagem ou trabalho?</h2>
-<p class="small">Quantas propostas cada vereador apresentou em cada grupo, pela mesma regra para todos (veja "Como agrupamos as propostas"). É só contagem: um grupo não vale mais que outro. Toque no nome para ler proposta por proposta.</p>
-{tab_html}</section>
-
-<section aria-labelledby="divisao"><h2 id="divisao">Votações em que os vereadores votaram diferente</h2>
+<section aria-labelledby="divisao"><p class="kick">Votos</p><h2 id="divisao">Votações em que os vereadores votaram diferente</h2>
 <p class="small">As 20 mais recentes. As demais aparecem na ficha de cada vereador.</p>
 <ul class="splits">{div_html}</ul></section>
 
-<section aria-labelledby="sessoes"><h2 id="sessoes">Sessões</h2>
+<section aria-labelledby="sessoes"><p class="kick">Calendário</p><h2 id="sessoes">Sessões</h2>
 <ul class="sessions">{sessoes_li}</ul>
 <p class="small" style="margin-top:.75rem">Lista completa em {link(URL_SESSOES, "a pesquisa de sessões da Câmara")}.</p></section>
+
+<section aria-labelledby="fontes"><p class="kick">Transparência</p><h2 id="fontes">De onde vêm os números</h2>
+<p class="small">Tudo sai do sistema da própria Câmara Municipal ({link(SAPL + "/", "SAPL")}). Nada é digitado à mão: um programa baixa os dados todos os dias de madrugada.</p>
+<div class="fc">
+<article><h3>Presença</h3><p>Conta como presente quem aparece na lista de presença da sessão (expediente ou Ordem do Dia) ou votou nela, porque as listas às vezes deixam nomes de fora. São {len(SESSOES)} sessões desde {desde_txt}{f", e {sem_lista} ficaram de fora porque o sistema não registrou a presença de ninguém nelas" if sem_lista else ""}. "Sem presença" não diz o motivo da ausência.</p></article>
+<article><h3>Homenagem ou trabalho</h3><p>O site separa cada proposta pelo tipo e pelas palavras do texto oficial, com a mesma regra para todos. Abra qualquer grupo, leia uma por uma e tire a sua conclusão.</p></article>
+<article><h3>Pedido não é obra feita</h3><p>Um pedido de melhoria é só um pedido. O sistema da Câmara não informa se a Prefeitura atendeu.</p></article>
+<article><h3>Votos</h3><p>Só entram as votações em que o sistema registra o voto de cada vereador: {n(len(VOTACOES))} desde {desde_txt}. Em {n(votos_iguais)} delas, todos votaram igual.</p></article>
+<article><h3>Atualização</h3><p>O robô confere a Câmara todo dia de madrugada. Se a coleta vier incompleta ou estranha, o site não é trocado e continua com a última versão boa.</p></article>
+<article><h3>Achou um erro?</h3><p>Abra a ficha oficial pelo link do crachá e compare. Se a Câmara corrigir o registro, o número daqui muda na atualização seguinte. Se a diferença continuar, o erro pode estar em como este site agrupa os dados.</p></article></div></section>
 
 <section aria-labelledby="regra"><h2 id="regra">Como agrupamos as propostas</h2>
 <p>A regra é a mesma para todos os vereadores. O site olha cada proposta na ordem abaixo, e a primeira regra que servir decide o grupo.</p>
 <ol class="rule">
 <li><b>Só entram propostas com vereador como autor.</b> Ficam de fora as do prefeito, da Mesa Diretora, das comissões e as atas.</li>
-<li><b>Papéis de rotina:</b> dispensa de leitura, dispensa de parecer e inversão de pauta.</li>
+<li><b>Papéis de rotina:</b> dispensa de leitura, dispensa de parecer e inversão de pauta. Não entram na conta.</li>
 <li><b>Homenagens e datas:</b> textos com aplausos, congratulações, parabéns, pesar, louvor, título de cidadão, nome de rua, semana ou dia municipal.</li>
 <li><b>Propostas de lei:</b> projetos de lei, de resolução e de decreto legislativo, e emendas.</li>
 <li><b>Pedidos de melhoria nos bairros:</b> indicações, e requerimentos que pedem "providências urgentes".</li>
@@ -374,27 +456,20 @@ PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <li><b>Outros:</b> tudo que sobrou.</li></ol>
 <p class="small">O site não interpreta o sentido do texto. Só usa o tipo da proposta e as palavras acima. Uma proposta com mais de um autor aparece na lista de cada autor. Quem discordar de um grupo pode ler o texto oficial pelo link da proposta.</p></section>
 
-<section aria-labelledby="fontes"><h2 id="fontes">De onde vêm os números</h2>
-<p>Tudo vem do sistema da própria Câmara ({link(SAPL + "/", "SAPL")}). Ninguém digita nada à mão: um programa baixa os dados todos os dias de madrugada.</p>
-<ul class="rule"><li><b>Presença:</b> as listas de presença de cada sessão (expediente e Ordem do Dia) e os votos. Quem votou numa sessão conta como presente nela, porque as listas às vezes deixam nomes de fora. "Sem presença" não diz o motivo da ausência.</li>
-<li><b>Votos:</b> votações nominais, com o voto de cada vereador.</li>
-<li><b>Propostas e grupos:</b> o tipo e o texto oficial de cada matéria, agrupados pela regra abaixo.</li>
-<li><b>Pedidos repetidos e busca por rua:</b> nomes de lugares achados no texto, por um programa que pode errar.</li></ul>
-<p class="small">Se a coleta do dia vier incompleta ou estranha, o site não é trocado e continua com a última versão boa. Este site não mostra salários, porque eles não estão nesse sistema.</p></section>
-
-<section aria-labelledby="erro"><h2 id="erro">Achou um erro?</h2>
-<p>Toque no link de qualquer número ou proposta e compare com a página da Câmara. Se a Câmara corrigir um registro, o número muda na próxima atualização. Se a diferença continuar, o erro pode estar na forma como este site agrupa ou lê os dados.</p></section>
-
 <section aria-labelledby="palavras"><h2 id="palavras">Palavras que aparecem</h2>
 <p class="small">Explicações gerais, escritas por este site. Não vêm da Câmara.</p><dl>{gloss}</dl></section>
 
-<footer><p>Fonte: Câmara Municipal de {e(CIDADE)}, sistema {link(SAPL + "/", "SAPL")}. Dados lidos em {agora}.</p>
+<footer><p>Radar {e(CIDADE)} é um projeto independente, feito por morador, sem vínculo com a Câmara, com a Prefeitura ou com partido.</p>
+<p>Fonte: Câmara Municipal de {e(CIDADE)}, sistema {link(SAPL + "/", "SAPL")}. Coleta de {conferido}.</p>
 <p>Os dados da Câmara estão sob licença {link("https://creativecommons.org/licenses/by/4.0/", "Creative Commons BY 4.0")}.</p>
-<p>Se um número aqui for diferente do site da Câmara, vale o da Câmara. Se a Câmara corrigir um registro, o número muda na próxima atualização.</p></footer>
+<p>Se um número aqui for diferente do site da Câmara, vale o da Câmara.</p></footer>
 </div>
 <script>{JS}</script>
 """
 PASTA_SAIDA.mkdir(parents=True, exist_ok=True)
+if (AQUI / "fotos").is_dir():
+    import shutil
+    shutil.copytree(AQUI / "fotos", PASTA_SAIDA / "fotos", dirs_exist_ok=True)
 (PASTA_SAIDA / "index.html").write_text(PAGINA, encoding="utf-8")
 print(f"ok: {len(SESSOES)} sessões, {len(VER)} vereadores, {len(VOTACOES)} votações ({len(DIVIDIDAS)} divididas), "
-      f"{len(PROPS)} propostas, {len(REP)} grupos repetidos -> {PASTA_SAIDA / 'index.html'}")
+      f"{TOTAL} propostas, {len(REP)} grupos repetidos -> {PASTA_SAIDA / 'index.html'}")

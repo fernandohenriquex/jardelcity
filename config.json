@@ -11,5 +11,9 @@
     "vereadores_ativos_min": 11,
     "vereadores_ativos_max": 15,
     "propostas_vereador_min": 10
-  }
+  },
+  "marca": [
+    "JARDIN",
+    "ÓPOLIS"
+  ]
 }

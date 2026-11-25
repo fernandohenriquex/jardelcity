@@ -21,3 +21,6 @@ Actions > "Atualizar e publicar o site" > Run workflow. A opção `forcar` aceit
 - `config.json`: cidade, endereço do SAPL, data inicial, lugares extras e limites (`validacao`).
 - `regras.py`: regra única de classificação das propostas.
 - `testes/teste_validar.py`: prova que dados ruins são bloqueados.
+
+## Fotos dos vereadores (opcional)
+Coloque os arquivos na pasta `fotos/`, com o número do vereador no SAPL como nome (ex.: `fotos/5.jpg`, `.png` ou `.webp`). O número aparece no endereço da ficha, em `.../parlamentar/5`. Onde houver foto, o crachá usa a foto; onde não houver, usa as iniciais. Use só fotos que você tem direito de publicar.
