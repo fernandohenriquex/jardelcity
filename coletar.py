@@ -33,6 +33,7 @@ EP = {
     "materia": "/api/materia/materialegislativa/",
     "autor": "/api/base/autor/",                                  # [A CONFIRMAR]
     "presenca": "/api/sessao/sessaoplenariapresenca/",            # [A CONFIRMAR]
+    "presenca_od": "/api/sessao/presencaordemdia/",               # presença na Ordem do Dia (lista separada da do expediente)
     "votacao": "/api/sessao/registrovotacao/",                    # [A CONFIRMAR]
     "voto": "/api/sessao/votoparlamentar/",                       # [A CONFIRMAR]
     "ordemdia": "/api/sessao/ordemdia/",                          # [A CONFIRMAR]
@@ -220,6 +221,14 @@ def coletar():
         p = pegar(r, "parlamentar")
         if s in ids_sessao and p in parl:
             presencas.append(dict(sessao=s, parlamentar=p))
+    n_exped = len(presencas)
+    for r in (tentar("presenca_od") or []):
+        s = pegar(r, "sessao_plenaria", "sessao")
+        p = pegar(r, "parlamentar")
+        if s in ids_sessao and p in parl:
+            presencas.append(dict(sessao=s, parlamentar=p))
+    presencas = [dict(sessao=s, parlamentar=p) for s, p in sorted({(x["sessao"], x["parlamentar"]) for x in presencas})]
+    relatorio.append(f"presença: {n_exped} registros do expediente; com a Ordem do Dia, {len(presencas)} pares sessão/vereador sem repetição")
     salvar("presencas.json", presencas)
     relatorio.append(f"presenças: {len(presencas)} registros em {len({x['sessao'] for x in presencas})} sessões")
 

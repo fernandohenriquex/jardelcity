@@ -59,6 +59,10 @@ SESSOES_COM_PRESENCA = [s for s in SESSOES if PRES.get(s["id"])]
 VOTACOES = [v for v in ler("votacoes.json") if v["sessao"] in SESS and v.get("votos")]
 for _v in VOTACOES:  # chaves de objeto JSON são texto; os ids dos vereadores são números
     _v["votos"] = {(int(k) if str(k).isdigit() else k): x for k, x in _v["votos"].items()}
+PRES_LISTA = {s: set(v) for s, v in PRES.items()}  # só o que as listas de presença da Câmara registram
+for _v in VOTACOES:  # quem votou na sessão estava na sessão
+    for _k in _v["votos"]:
+        PRES[_v["sessao"]].add(_k)
 MATERIAS = ler("materias.json")
 
 # quem aparece no site: tem presença no período ou está ativo
@@ -151,11 +155,14 @@ def bloco_vereador(pid):
     if faltas:
         lf = " ".join(link(resumo(s["id"]), br(s["data"])[:5]) for s in faltas[:40])
         mais = f" e mais {len(faltas) - 40}" if len(faltas) > 40 else ""
-        faltou = (f'<p class="meta">Sessões sem presença registrada para {e(p["nome"])}: {lf}{mais}.</p>')
+        faltou = (f'<p class="meta">Sessões sem presença nem voto registrados para {e(p["nome"])}: {lf}{mais}.</p>')
     else:
         faltou = '<p class="meta">Nenhuma sessão sem presença registrada no período.</p>'
-    pres = (f'<p>Esteve presente em {link(URL_PRESENCA, str(estev))} de {link(URL_SESSOES, str(total))} sessões '
-            f'com presença registrada. O número de sessões não conta sessões sem lista de presença no sistema.</p>{faltou}')
+    so_voto = sum(1 for s in SESSOES_COM_PRESENCA if pid in PRES[s["id"]] and pid not in PRES_LISTA.get(s["id"], ()))
+    nota_voto = (f" Em {so_voto} delas a lista de presença não traz o nome, mas há voto registrado na sessão, então contamos como presente."
+                 if so_voto else "")
+    pres = (f'<p>Esteve presente em {link(URL_PRESENCA, str(estev))} de {link(URL_SESSOES, str(total))} sessões. '
+            f'Conta como presente quem aparece na lista de presença da sessão (expediente ou Ordem do Dia) ou votou nela.{nota_voto}</p>{faltou}')
     # votos
     meus = [v for v in VOTACOES if pid in v["votos"]]
     cnt = collections.Counter(v["votos"][pid] for v in meus)
@@ -334,7 +341,7 @@ PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 <select id="partido"><option value="">Todos</option>{opt_partidos}</select></div>
 <div><label for="ordem" class="lbl">Ordenar por</label>
 <select id="ordem"><option value="nome">Nome (A a Z)</option>
-<option value="faltas">Mais sessões sem presença registrada</option>
+<option value="faltas">Mais sessões sem presença</option>
 <option value="lei">Mais propostas de lei</option>
 <option value="homenagem">Mais homenagens</option>
 <option value="melhoria">Mais pedidos para os bairros</option>
@@ -369,7 +376,7 @@ PAGINA = f"""<title>Vereadores de {e(CIDADE)}</title>
 
 <section aria-labelledby="fontes"><h2 id="fontes">De onde vêm os números</h2>
 <p>Tudo vem do sistema da própria Câmara ({link(SAPL + "/", "SAPL")}). Ninguém digita nada à mão: um programa baixa os dados todos os dias de madrugada.</p>
-<ul class="rule"><li><b>Presença:</b> lista de presença de cada sessão. "Sem presença registrada" não diz o motivo da ausência.</li>
+<ul class="rule"><li><b>Presença:</b> as listas de presença de cada sessão (expediente e Ordem do Dia) e os votos. Quem votou numa sessão conta como presente nela, porque as listas às vezes deixam nomes de fora. "Sem presença" não diz o motivo da ausência.</li>
 <li><b>Votos:</b> votações nominais, com o voto de cada vereador.</li>
 <li><b>Propostas e grupos:</b> o tipo e o texto oficial de cada matéria, agrupados pela regra abaixo.</li>
 <li><b>Pedidos repetidos e busca por rua:</b> nomes de lugares achados no texto, por um programa que pode errar.</li></ul>
