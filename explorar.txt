@@ -1,0 +1,187 @@
+Endereço base: https://sapl.jardinopolis.sp.leg.br
+
+Esquema OpenAPI em /api/schema/?format=json: 283 caminhos
+  /api/audiencia/anexoaudienciapublica/
+  /api/audiencia/audienciapublica/
+  /api/audiencia/tipoaudienciapublica/
+  /api/auth/token
+  /api/base/appconfig/
+  /api/base/auditlog/
+  /api/base/autor/
+  /api/base/autor/bancada/
+  /api/base/autor/bloco/
+  /api/base/autor/comissao/
+  /api/base/autor/frente/
+  /api/base/autor/orgao/
+  /api/base/autor/parlamentar/
+  /api/base/autor/possiveis/
+  /api/base/autor/provaveis/
+  /api/base/casalegislativa/
+  /api/base/metadata/
+  /api/base/operadorautor/
+  /api/base/tipoautor/
+  /api/comissoes/cargocomissao/
+  /api/comissoes/comissao/
+  /api/comissoes/composicao/
+  /api/comissoes/documentoacessorio/
+  /api/comissoes/participacao/
+  /api/comissoes/periodo/
+  /api/comissoes/reuniao/
+  /api/comissoes/tipocomissao/
+  /api/compilacao/dispositivo/
+  /api/compilacao/nota/
+  /api/compilacao/perfilestruturaltextoarticulado/
+  /api/compilacao/publicacao/
+  /api/compilacao/textoarticulado/
+  /api/compilacao/tipodispositivo/
+  /api/compilacao/tipodispositivorelationship/
+  /api/compilacao/tiponota/
+  /api/compilacao/tipopublicacao/
+  /api/compilacao/tipotextoarticulado/
+  /api/compilacao/tipovide/
+  /api/compilacao/veiculopublicacao/
+  /api/compilacao/vide/
+  /api/contenttypes/contenttype/
+  /api/materia/acompanhamentomateria/
+  /api/materia/anexada/
+  /api/materia/assuntomateria/
+  /api/materia/autoria/
+  /api/materia/configetiquetamaterialegislativa/
+  /api/materia/despachoinicial/
+  /api/materia/documentoacessorio/
+  /api/materia/historicoproposicao/
+  /api/materia/materiaassunto/
+  /api/materia/materiaemtramitacao/
+  /api/materia/materialegislativa/
+  /api/materia/numeracao/
+  /api/materia/orgao/
+  /api/materia/origem/
+  /api/materia/parecer/
+  /api/materia/pautareuniao/
+  /api/materia/proposicao/
+  /api/materia/regimetramitacao/
+  /api/materia/relatoria/
+  /api/materia/statustramitacao/
+  /api/materia/tipodocumento/
+  /api/materia/tipofimrelatoria/
+  /api/materia/tipomaterialegislativa/
+  /api/materia/tipoproposicao/
+  /api/materia/tramitacao/
+  /api/materia/unidadetramitacao/
+  /api/norma/anexonormajuridica/
+  /api/norma/assuntonorma/
+  /api/norma/autorianorma/
+  /api/norma/legislacaocitada/
+  /api/norma/normaestatisticas/
+  /api/norma/normajuridica/
+  /api/norma/normarelacionada/
+  /api/norma/tiponormajuridica/
+  /api/norma/tipovinculonormajuridica/
+  /api/norma/viewnormasestatisticas/
+  /api/painel/cronometro/
+  /api/painel/painel/
+  /api/parlamentares/bloco/
+  /api/parlamentares/blococargo/
+  /api/parlamentares/blocomembro/
+  /api/parlamentares/cargomesa/
+  /api/parlamentares/coligacao/
+  /api/parlamentares/composicaocoligacao/
+  /api/parlamentares/composicaomesa/
+  /api/parlamentares/dependente/
+  /api/parlamentares/filiacao/
+  /api/parlamentares/frente/
+  /api/parlamentares/frentecargo/
+  /api/parlamentares/frenteparlamentar/
+  /api/parlamentares/legislatura/
+  /api/parlamentares/mandato/
+  /api/parlamentares/mesadiretora/
+  /api/parlamentares/nivelinstrucao/
+  /api/parlamentares/parlamentar/
+  /api/parlamentares/parlamentar/search_parlamentares/
+  /api/parlamentares/partido/
+  /api/parlamentares/sessaolegislativa/
+  /api/parlamentares/situacaomilitar/
+  /api/parlamentares/tipoafastamento/
+  /api/parlamentares/tipodependente/
+  /api/parlamentares/votante/
+  /api/protocoloadm/acompanhamentodocumento/
+  /api/protocoloadm/anexado/
+  /api/protocoloadm/documentoacessorioadministrativo/
+  /api/protocoloadm/documentoadministrativo/
+  /api/protocoloadm/protocolo/
+  /api/protocoloadm/statustramitacaoadministrativo/
+  /api/protocoloadm/tipodocumentoadministrativo/
+  /api/protocoloadm/tramitacaoadministrativo/
+  /api/protocoloadm/vinculodocadminmateria/
+  /api/schema/
+  /api/sessao-plenaria/
+  /api/sessao/bancada/
+  /api/sessao/cargobancada/
+  /api/sessao/consideracoesfinais/
+  /api/sessao/correspondencia/
+  /api/sessao/expedientemateria/
+  /api/sessao/expedientesessao/
+  /api/sessao/integrantemesa/
+  /api/sessao/justificativaausencia/
+  /api/sessao/ocorrenciasessao/
+  /api/sessao/orador/
+  /api/sessao/oradorexpediente/
+  /api/sessao/oradorordemdia/
+  /api/sessao/ordemdia/
+  /api/sessao/presencaordemdia/
+  /api/sessao/registroleitura/
+  /api/sessao/registrovotacao/
+  /api/sessao/resumoordenacao/
+  /api/sessao/retiradapauta/
+  /api/sessao/sessaoplenaria/
+  /api/sessao/sessaoplenaria/ecidadania/
+  /api/sessao/sessaoplenaria/years/
+  /api/sessao/sessaoplenariapresenca/
+  /api/sessao/tipoexpediente/
+  /api/sessao/tipojustificativa/
+  /api/sessao/tiporesultadovotacao/
+  /api/sessao/tiporetiradapauta/
+  /api/sessao/tiposessaoplenaria/
+  /api/sessao/votoparlamentar/
+
+== parlamentar  /api/parlamentares/parlamentar/  (total: 21)
+{"id": 5, "__str__": "Aguinaldo J. de Souza (Agnaldo Gemeo)", "link_detail_backend": "/parlamentar/5", "metadata": {}, "data_ultima_atualizacao": "2026-10-15T04:20:13.830027-03:00", "nome_completo": "Aguinaldo José de Souza (Agnaldo Gemeo))", "nome_parlamentar": "Aguinaldo J. de Souza (Agnaldo Gemeo)", "sexo": "M", "profissao": "", "locais_atuacao": "", "ativo": false, "biografia": "", "nivel_instrucao": null}
+
+== sessao  /api/sessao/sessaoplenaria/  (total: 211)
+{"id": 39, "__str__": "19ª Extraordinária da 2ª Sessão Legislativa da 0ª Legislatura", "link_detail_backend": "/sessao/39", "metadata": {}, "cod_andamento_sessao": null, "painel_aberto": true, "data_inicio": "2022-08-15", "hora_inicio": "21:38", "hora_fim": "22:15", "numero": 19, "data_fim": "2022-08-15", "url_audio": "", "url_video": "", "upload_pauta": "http://sapl.jardinopolis.sp.leg.br/media/sapl/public/sessaoplenaria/39/pauta/pauta_19a_sessao_extraordinaria_2022_-_15-08-22.doc", "upload_ata": null, "upload_anexo": null, "iniciada": true, "finalizada": true, "interativa": false, "tema_solene": "", "data_ultima_atualizacao": "2025-01-03T09:37:35.011402-03:00", "publicar_pauta": true, "tipo": 2, "sessao_legislativa": 3, "legislatura": 1, "correspondencias": []}
+
+== materia  /api/materia/materialegislativa/  (total: 4604)
+{"id": 4571, "__str__": "Projeto de Emenda Constitucional - Leg nº 1 de 2026", "link_detail_backend": "/materia/4571", "metadata": {}, "numero": 1, "ano": 2026, "numero_protocolo": 13, "data_apresentacao": "2026-02-13", "tipo_apresentacao": "E", "data_publicacao": null, "numero_origem_externa": "", "ano_origem_externa": null, "data_origem_externa": null, "apelido": "", "dias_prazo": null, "data_fim_prazo": null, "em_tramitacao": true, "polemica": false, "objeto": "", "complementar": false, "ementa": "\"DÁ NOVA REDAÇÃO NO CAPUT DO ARTIGO 24, NO PARÁGRADO ÚNICO DO ARTIGO 26, NO INCISO XIII DO ARTIGO  36, NO PARÁGRAFO 2º DO ARTIGO 38, PARÁGRAFO 6º DO ARTIGO 46; E, REVOGAM OS INCISOS I, III e V TODOS DO PARÁGRADO 2º DO ARTIGO 24, O PARÁGRAFO 2º DO ARTIGO  40 E PARÁGRAFO ÚNICO DO ARTIGO 153, TODOS DA LEI ORGÂNICA DO MUNICÍPIO DE JARDINÓPOLIS.”", "indexacao": "", "observacao": "", "resultado": "", "texto_original": "http://sapl.jardinopolis.sp.leg.br/media/sapl/public/materialegislativa/2026/4571/projeto_emenda_constitucional_01-26_leg.pdf", "data_ultima_atualizacao": "2026-05-03T14:27:09.185888-03:00", "ultima_edicao": "2026-02-13T13:23:20.847326-03:00", "tipo": 1, "regime_tramitacao": 1, "tipo_origem_externa": null, "local_origem_externa": null, "anexadas": [4605, 4617], "autores": [38, 14, 41, 16, 17, 43, 44, 21]}
+
+== autor  /api/base/autor/  (total: 52)
+{"id": 8, "__str__": "AM - COMISSÃO PERMANENTE DE ASSUNTOS METROPOLITANOS", "link_detail_backend": "/sistema/autor/8", "metadata": {}, "autor_related": {"value": 5, "text": "AM - COMISSÃO PERMANENTE DE ASSUNTOS METROPOLITANOS"}, "object_id": 5, "nome": "AM - COMISSÃO PERMANENTE DE ASSUNTOS METROPOLITANOS", "cargo": "", "tipo": 4, "content_type": 4, "operadores": []}
+
+== presenca  /api/sessao/sessaoplenariapresenca/  (total: 2519)
+{"id": 3050, "__str__": "SessaoPlenariaPresenca object (3050)", "link_detail_backend": "", "metadata": {}, "data_sessao": null, "sessao_plenaria": 171, "parlamentar": 5}
+
+== presenca_od  /api/sessao/presencaordemdia/  (total: 2500)
+{"id": 540, "__str__": "Sessão: 1ª Ordinária da 3ª Sessão Legislativa da 0ª Legislatura Parlamentar: Aguinaldo J. de Souza (Agnaldo Gemeo)", "link_detail_backend": "", "metadata": {}, "sessao_plenaria": 50, "parlamentar": 5}
+
+== votacao  /api/sessao/registrovotacao/  (total: 3287)
+{"id": 13, "__str__": "Ordem: Ordem do Dia/Expediente: 1 - Parecer Justiça e Redação nº 65 de 2022 em 19ª Extraordinária da 2ª Sessão Legislativa da 0ª Legislatura - Votação: Aprovado", "link_detail_backend": "", "metadata": {}, "numero_votos_sim": 13, "numero_votos_nao": 0, "numero_abstencoes": 0, "observacao": "", "data_hora": "2022-08-15T21:44:21.253229-03:00", "tipo_resultado_votacao": 1, "materia": 544, "ordem": 305, "expediente": null}
+
+== voto  /api/sessao/votoparlamentar/  (total: 41035)
+{"id": 136, "__str__": "Votação: Ordem: Ordem do Dia/Expediente: 1 - Parecer Justiça e Redação nº 65 de 2022 em 19ª Extraordinária da 2ª Sessão Legislativa da 0ª Legislatura - Votação: Aprovado - Parlamentar: Rogério Bello Lima Conga", "link_detail_backend": "", "metadata": {}, "voto": "Sim", "data_hora": "2022-08-15T21:44:21.330356-03:00", "votacao": 13, "parlamentar": 4, "ordem": 305, "expediente": null}
+
+== ordemdia  /api/sessao/ordemdia/  (total: 2915)
+{"id": 305, "__str__": "Ordem do Dia/Expediente: 1 - Parecer Justiça e Redação nº 65 de 2022 em 19ª Extraordinária da 2ª Sessão Legislativa da 0ª Legislatura", "link_detail_backend": "/sessao/ordemdia/305", "metadata": {}, "data_ordem": "2022-08-15", "observacao": "", "numero_ordem": 1, "resultado": "Aprovado", "tipo_votacao": 2, "votacao_aberta": false, "registro_aberto": false, "sessao_plenaria": 39, "materia": 544, "tramitacao": null}
+
+== expediente  /api/sessao/expedientemateria/  (total: 2500)
+{"id": 244, "__str__": "Ordem do Dia/Expediente: 1 - Dispensa da leitura das correspondências nº 3 de 2023 em 6ª Ordinária da 3ª Sessão Legislativa da 0ª Legislatura", "link_detail_backend": "/sessao/expedientemateria/244", "metadata": {}, "data_ordem": "2023-03-27", "observacao": "", "numero_ordem": 1, "resultado": "Aprovado", "tipo_votacao": 2, "votacao_aberta": false, "registro_aberto": false, "sessao_plenaria": 56, "materia": 1129, "tramitacao": null}
+
+== resultado  /api/sessao/tiporesultadovotacao/  (total: 3)
+{"id": 1, "__str__": "Aprovado", "link_detail_backend": "/sistema/sessao-plenaria/tipo-resultado-votacao/1", "metadata": {}, "nome": "Aprovado", "natureza": "A"}
+
+== filiacao  /api/parlamentares/filiacao/  (total: 28)
+{"id": 15, "__str__": "Caio E. Jardim Antônio - PT - PARTIDO DOS TRABALHADORES", "link_detail_backend": "/parlamentar/filiacao/15", "metadata": {}, "data": "2024-03-17", "data_desfiliacao": null, "parlamentar": 6, "partido": 4}
+
+== partido  /api/parlamentares/partido/  (total: 42)
+{"id": 37, "__str__": "CIDADANIA - CIDADANIA", "link_detail_backend": "/sistema/parlamentar/partido/37", "metadata": {}, "sigla": "CIDADANIA", "nome": "CIDADANIA", "data_criacao": null, "data_extincao": null, "logo_partido": null, "observacao": ""}
+
+
+Salvo em explorar.txt. Se algo deu ERRO ou faltou campo, mande este arquivo para ajustar.

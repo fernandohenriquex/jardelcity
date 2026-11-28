@@ -1,0 +1,74 @@
+Parlamentares...
+Sessões...
+Autores...
+Matérias (pode demorar alguns minutos)...
+   materia: 1000 de 4604
+   materia: 2000 de 4604
+   materia: 3000 de 4604
+   materia: 4000 de 4604
+Presenças...
+   presenca: 1000 de 2519
+   presenca: 2000 de 2519
+   presenca_od: 1000 de 2500
+   presenca_od: 2000 de 2500
+Votações...
+   votacao: 1000 de 3287
+   votacao: 2000 de 3287
+   votacao: 3000 de 3287
+   voto: 1000 de 41035
+   voto: 2000 de 41035
+   voto: 3000 de 41035
+   voto: 4000 de 41035
+   voto: 5000 de 41035
+   voto: 6000 de 41035
+   voto: 7000 de 41035
+   voto: 8000 de 41035
+   voto: 9000 de 41035
+   voto: 10000 de 41035
+   voto: 11000 de 41035
+   voto: 12000 de 41035
+   voto: 13000 de 41035
+   voto: 14000 de 41035
+   voto: 15000 de 41035
+   voto: 16000 de 41035
+   voto: 17000 de 41035
+   voto: 18000 de 41035
+   voto: 19000 de 41035
+   voto: 20000 de 41035
+   voto: 21000 de 41035
+   voto: 22000 de 41035
+   voto: 23000 de 41035
+   voto: 24000 de 41035
+   voto: 25000 de 41035
+   voto: 26000 de 41035
+   voto: 27000 de 41035
+   voto: 28000 de 41035
+   voto: 29000 de 41035
+   voto: 30000 de 41035
+   voto: 31000 de 41035
+   voto: 32000 de 41035
+   voto: 33000 de 41035
+   voto: 34000 de 41035
+   voto: 35000 de 41035
+   voto: 36000 de 41035
+   voto: 37000 de 41035
+   voto: 38000 de 41035
+   voto: 39000 de 41035
+   voto: 40000 de 41035
+   voto: 41000 de 41035
+   ordemdia: 1000 de 2915
+   ordemdia: 2000 de 2915
+   ordemdia: 2915 de 2915
+   expediente: 1000 de 2500
+   expediente: 2000 de 2500
+
+Resumo:
+  - parlamentares: 21 (13 ativos, 20 com partido)
+  - sessões desde 2025-01-01: 82 (de 211 no total)
+  - autores ligados a vereadores: 20 de 52
+  - matérias desde 2025-01-01: 2035 (839 sem vereador como autor)
+  - presença: 1011 registros do expediente; com a Ordem do Dia, 992 pares sessão/vereador sem repetição
+  - presenças: 992 registros em 82 sessões
+  - votações nominais: 1303 (de 3287 registros de votação)
+
+Arquivos em dados_novos. Agora rode:  python3 gerar.py

@@ -1,0 +1,28 @@
+# Verificação dos dados
+
+✔ parlamentares: 21 registros
+✔ sessoes: 82 registros
+✔ materias: 2035 registros
+✔ presencas: 992 registros
+✔ votacoes: 1303 registros
+✔ vereadores ativos: 13
+✔ ids de vereadores sem repetição
+✔ sessões: 82, sem repetição
+✔ datas das sessões dentro do período
+✔ presença registrada em 100% das sessões
+✔ toda presença aponta para sessão e vereador conhecidos
+✔ nenhuma sessão com mais presentes que o possível
+✔ votações nominais: 1303, cada uma com número de votos possível
+✔ todo voto é de vereador conhecido
+✔ toda votação aponta para uma sessão conhecida
+✔ matérias: 2035, das quais 1196 com vereador como autor
+✔ matérias sem texto: 0
+✔ ids de matérias sem repetição
+✔ nenhuma matéria com data no futuro
+✔ parlamentares: 21 antes, 21 agora, 0 sumiram
+✔ sessoes: 82 antes, 82 agora, 0 sumiram
+✔ materias: 2035 antes, 2035 agora, 0 sumiram
+✔ presencas: 992 antes, 992 agora, 0 sumiram
+✔ votacoes: 1303 antes, 1303 agora, 0 sumiram
+
+RESULTADO: pode publicar.
